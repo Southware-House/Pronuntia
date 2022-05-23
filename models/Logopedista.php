@@ -33,6 +33,7 @@ class Logopedista extends \yii\db\ActiveRecord implements \yii\web\IdentityInter
     {
         return [
             [['email'], 'required'],
+            ['email', 'email'], //formato valido email
             [['email'], 'string', 'max' => 50],
             [['cognome', 'indirizzo'], 'string', 'max' => 30],
             [['passwd'], 'string', 'max' => 255],
@@ -89,7 +90,7 @@ class Logopedista extends \yii\db\ActiveRecord implements \yii\web\IdentityInter
     }
 
     public function validateAuthKey($authKey){
-        //return $this->authKey === $authKey;
+        return $this->authKey === $authKey;
     }
 
     public function validatePassword($passwd){

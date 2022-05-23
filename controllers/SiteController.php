@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Logopedista;
 
 class SiteController extends Controller
 {
@@ -124,5 +125,28 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionRegister(){
+        $model = new Logopedista();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                $model->email = $_POST['Logopedista']['email'];
+                $model->passwd = password_hash($_POST['Logopedista']['passwd'],PASSWORD_BCRYPT);
+                $model->nome = $_POST['Logopedista']['nome'];
+                $model->cognome = $_POST['Logopedista']['cognome'];
+                $model->indirizzo = $_POST['Logopedista']['indirizzo'];
+                $model->telefono = $_POST['Logopedista']['telefono'];
+                if($model->save()) {
+                    return $this->redirect(['login']);
+                }
+            }
+        }
+
+        return $this->render('register', [
+            'model' => $model,
+        ]);
     }
 }
