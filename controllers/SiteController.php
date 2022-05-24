@@ -134,7 +134,7 @@ class SiteController extends Controller
             if ($model->validate()) {
                 // form inputs are valid, do something here
                 $model->email = $_POST['Logopedista']['email'];
-                $model->passwd = password_hash($_POST['Logopedista']['passwd'],PASSWORD_BCRYPT);
+                $model->passwd = password_hash($_POST['Logopedista']['passwd'], PASSWORD_DEFAULT);
                 $model->nome = $_POST['Logopedista']['nome'];
                 $model->cognome = $_POST['Logopedista']['cognome'];
                 $model->indirizzo = $_POST['Logopedista']['indirizzo'];
