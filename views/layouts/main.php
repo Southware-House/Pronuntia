@@ -39,15 +39,11 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Register', 'url' => ['/site/sceltar']],
 
     ];
     if(Yii::$app->user->isGuest) {
-        array_push($navItem, ['label' => 'Login', 'url' => ['/site/login']]/*, ['label' => 'Register', 'url' => ['/site/register']]*/);
-        echo 'prova1';
-        echo 'prova3';
+        array_push($navItem, ['label' => 'Login', 'url' => ['/site/login']],  ['label' => 'Register', 'url' => ['/site/sceltar']]);
     }else {
-        echo 'prova';
         array_push($navItem, '<li>'. Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline']). Html::submitButton('Logout ('. Yii::$app->user->identity->email.')',['class' => 'btn btn-link logout']).Html::endForm().'</li>');
     }
     echo Nav::widget([
