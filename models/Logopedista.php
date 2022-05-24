@@ -7,8 +7,9 @@ use Yii;
 /**
  * This is the model class for table "logopedista".
  *
+ * @property int $id
  * @property string $email
- * @property string|null $passwd
+ * @property string $passwd
  * @property string|null $nome
  * @property string|null $cognome
  * @property string|null $indirizzo
@@ -82,7 +83,7 @@ class Logopedista extends \yii\db\ActiveRecord implements \yii\web\IdentityInter
     }
 
     public function getId(){
-        //return $this->id;
+        return $this->id;
     }
 
     public function getAuthKey(){

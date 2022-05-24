@@ -5,6 +5,7 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
+use app\models\Logopedista;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
@@ -40,10 +41,8 @@ AppAsset::register($this);
             ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if(Yii::$app->user->isGuest) {
-        array_push($navItem, ['label' => 'Login', 'url' => ['/site/login']], ['label' => 'Register', 'url' => ['/site/register']]);
-        echo 'prova1';
+        array_push($navItem, ['label' => 'Login', 'url' => ['/site/login']], ['label' => 'Register', 'url' => ['/site/sceltar']]);
     }else {
-        echo 'prova';
         array_push($navItem, '<li>'. Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline']). Html::submitButton('Logout ('. Yii::$app->user->identity->email.')',['class' => 'btn btn-link logout']).Html::endForm().'</li>');
     }
     echo Nav::widget([
