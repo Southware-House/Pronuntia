@@ -149,4 +149,10 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionSceltar() {
+
+        return $this->render('sceltar');
+
+    }
 }
