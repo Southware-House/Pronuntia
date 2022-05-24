@@ -36,7 +36,7 @@ class Logopedista extends \yii\db\ActiveRecord implements \yii\web\IdentityInter
             ['email', 'email'], //formato valido email
             [['email'], 'string', 'max' => 50],
             [['cognome', 'indirizzo'], 'string', 'max' => 30],
-            [['passwd'], 'string', 'max' => 255],
+            [['passwd'], 'string', 'max' => 300],
             [['passwd'], 'required'],
             [['nome'], 'string', 'max' => 20],
             [['telefono'], 'string', 'max' => 10],
@@ -51,7 +51,7 @@ class Logopedista extends \yii\db\ActiveRecord implements \yii\web\IdentityInter
     {
         return [
             'email' => 'Email',
-            'passwd' => 'Passwd',
+            'passwd' => 'Password',
         ];
     }
 
