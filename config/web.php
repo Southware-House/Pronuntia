@@ -24,6 +24,12 @@ $config = [
             'enableAutoLogin' => true,
             'enableSession' => true,
         ],
+        'user-two' => [
+            'class' => 'yii\web\User',
+            'identityClass' => 'app\models\Bambino',
+            'enableAutoLogin' => true,
+            'enableSession' => true,
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
