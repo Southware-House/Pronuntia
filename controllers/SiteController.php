@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use yii\db\Connection;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Logopedista;
@@ -127,7 +128,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionRegister(){
+    public function actionRegisterl() {
         $model = new Logopedista();
 
         if ($model->load(Yii::$app->request->post())) {
@@ -140,12 +141,20 @@ class SiteController extends Controller
                 $model->indirizzo = $_POST['Logopedista']['indirizzo'];
                 $model->telefono = $_POST['Logopedista']['telefono'];
                 if($model->save()) {
+                    $connection = new Connection([
+                        'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+                        'username' => 'root',
+                        'password' => 'root',
+                    ]);
+                    $connection->open();
+                    $command = $connection->createCommand("INSERT INTO Utente (email, passwd, isLogopedista) VALUES ('$model->email', '$model->passwd', True)");
+                    $command->execute();
                     return $this->redirect(['login']);
                 }
             }
         }
 
-        return $this->render('register', [
+        return $this->render('registerl', [
             'model' => $model,
         ]);
     }

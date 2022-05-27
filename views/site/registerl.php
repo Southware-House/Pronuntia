@@ -10,7 +10,7 @@ $this->title = 'Register';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="site-register">
+<div class="site-registerl">
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([

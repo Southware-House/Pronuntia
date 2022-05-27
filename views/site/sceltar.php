@@ -6,7 +6,7 @@ use app\controllers\SiteController;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Nav;
 
-$this->title = 'Login';
+$this->title = 'Registrazione';
 ?>
 <div class="site-index">
 
@@ -19,7 +19,7 @@ $this->title = 'Login';
         NavBar::begin(['brandLabel' => false]);
         echo Nav::widget([
             'items' => [
-                ['label' => 'Registrazione Logopedista', 'url' => ['/site/register']],
+                ['label' => 'Registrazione Logopedista', 'url' => ['/site/registerl']],
                 ['label' => 'Registrazione Paziente', 'url' => ['/site/about']],
             ],
             'options' => ['class' => 'navbar-nav'],
