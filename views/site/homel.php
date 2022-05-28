@@ -11,13 +11,12 @@ $this->title = 'Home';
 <div class="site-homel">
 
     <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">HOME</h1>
-
+        <h1 class="display-4">HOME LOGOPEDISTA</h1>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="card">
+            <div class="card text-center">
                 <div class="card-body">
                     <h5 class="card-title">CODICE REGISTRAZIONE</h5>
                     <p class="card-text">Genera codice paziente per effettuare la registrazione.</p>
@@ -28,7 +27,7 @@ $this->title = 'Home';
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card">
+            <div class="card text-center">
                 <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

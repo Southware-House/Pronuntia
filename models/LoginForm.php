@@ -73,7 +73,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-                $this->_user = Logopedista::findByEmail($this->email);
+                $this->_user = Utente::findByEmail($this->email);
         }
 
         return $this->_user;

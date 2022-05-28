@@ -74,11 +74,11 @@ class Logopedista extends \yii\db\ActiveRecord implements \yii\web\IdentityInter
         return self::findOne(['accessToken' => $token]);
     }
 
-    public static function findByEmail($email){//nuova funzione messa da me
+    public static function findByEmail($email) { //nuova funzione messa da me (giuseppe)
         return self::findOne(['email' => $email]);
     }
 
-    public function getEmail(){//nuova funzione messa da me 
+    public function getEmail() { //nuova funzione messa da me (giuseppe)
         return $this->email;
     }
 
