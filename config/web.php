@@ -26,7 +26,7 @@ $config = [
         ],
         'user-two' => [
             'class' => 'yii\web\User',
-            'identityClass' => 'app\models\Bambino',
+            'identityClass' => 'app\models\Associazione',
             'enableAutoLogin' => true,
             'enableSession' => true,
         ],

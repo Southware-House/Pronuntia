@@ -11,6 +11,7 @@ use yii\db\Connection;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Logopedista;
+use app\models\Bambino;
 
 class SiteController extends Controller
 {
@@ -162,6 +163,45 @@ class SiteController extends Controller
     public function actionSceltar() {
 
         return $this->render('sceltar');
+
+    }
+
+    public function actionRegisterb() {
+        $model = new Bambino();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('registerb', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionHomel() {
+
+        return $this->render('homel');
+
+    }
+
+    public $id;
+
+    public function actionGeneraCodice() {
+        $email=Yii::$app->user->identity->email;
+        $connection = new Connection([
+            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+            'username' => 'root',
+            'password' => 'root',
+        ]);
+        $connection->open();
+        $command = $connection->createCommand("INSERT INTO Associazione (email_logo) VALUES ('$email')");
+        $command->execute();
+        $command = $connection->createCommand("SELECT max(id_bambino) as id FROM Associazione")->queryScalar();
+        //$command->execute();
+        return $this->render('genera-codice', array('id'=>$command));
 
     }
 }

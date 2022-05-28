@@ -20,7 +20,7 @@ $this->title = 'Registrazione';
         echo Nav::widget([
             'items' => [
                 ['label' => 'Registrazione Logopedista', 'url' => ['/site/registerl']],
-                ['label' => 'Registrazione Paziente', 'url' => ['/site/about']],
+                ['label' => 'Registrazione Paziente', 'url' => ['/site/registerb']],
             ],
             'options' => ['class' => 'navbar-nav'],
         ]);

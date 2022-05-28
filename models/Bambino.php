@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "bambino".
+ * This is the model class for table "Bambino".
  *
  * @property string $id
  * @property string|null $email
@@ -16,8 +16,6 @@ use Yii;
  * @property string|null $telefono
  * @property int|null $età
  * @property string|null $passwd_caregiver
- *
- * @property Associazione $id0
  */
 class Bambino extends \yii\db\ActiveRecord
 {
@@ -26,7 +24,7 @@ class Bambino extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bambino';
+        return 'Bambino';
     }
 
     /**
@@ -39,7 +37,7 @@ class Bambino extends \yii\db\ActiveRecord
             [['età'], 'integer'],
             [['id'], 'string', 'max' => 6],
             [['email'], 'string', 'max' => 50],
-            [['passwd'], 'string', 'max' => 20],
+            [['passwd'], 'string', 'max' => 255],
             [['nome', 'cognome', 'indirizzo'], 'string', 'max' => 30],
             [['telefono'], 'string', 'max' => 10],
             [['passwd_caregiver'], 'string', 'max' => 5],
@@ -64,15 +62,5 @@ class Bambino extends \yii\db\ActiveRecord
             'età' => 'Età',
             'passwd_caregiver' => 'Passwd Caregiver',
         ];
-    }
-
-    /**
-     * Gets query for [[Id0]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getId0()
-    {
-        return $this->hasOne(Associazione::className(), ['id_bambino' => 'id']);
     }
 }
