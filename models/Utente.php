@@ -6,26 +6,21 @@ use Yii;
 use yii\web\IdentityInterface;
 
 /**
- * This is the model class for table "Bambino".
+ * This is the model class for table "Utente".
  *
- * @property string $id
- * @property string|null $email
- * @property string|null $passwd
- * @property string|null $nome
- * @property string|null $cognome
- * @property string|null $indirizzo
- * @property string|null $telefono
- * @property int|null $età
- * @property string|null $passwd_caregiver
+ * @property int|null $id
+ * @property string $email
+ * @property string $passwd
+ * @property int $isLogopedista
  */
-class Bambino extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class Utente extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'Bambino';
+        return 'Utente';
     }
 
     /**
@@ -34,16 +29,11 @@ class Bambino extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['id'], 'required'],
-            [['età'], 'integer'],
-            [['id'], 'string', 'max' => 6],
+            [['id', 'isLogopedista'], 'integer'],
+            [['email', 'passwd', 'isLogopedista'], 'required'],
             [['email'], 'string', 'max' => 50],
             [['passwd'], 'string', 'max' => 255],
-            [['nome', 'cognome', 'indirizzo'], 'string', 'max' => 30],
-            [['telefono'], 'string', 'max' => 10],
-            [['passwd_caregiver'], 'string', 'max' => 255],
-            [['id'], 'unique'],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Associazione::className(), 'targetAttribute' => ['id' => 'id_bambino']],
+            [['email'], 'unique'],
         ];
     }
 
@@ -56,12 +46,7 @@ class Bambino extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'id' => 'ID',
             'email' => 'Email',
             'passwd' => 'Passwd',
-            'nome' => 'Nome',
-            'cognome' => 'Cognome',
-            'indirizzo' => 'Indirizzo',
-            'telefono' => 'Telefono',
-            'età' => 'Età',
-            'passwd_caregiver' => 'Passwd Caregiver',
+            'isLogopedista' => 'Is Logopedista',
         ];
     }
 

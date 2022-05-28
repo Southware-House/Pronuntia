@@ -36,4 +36,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- site-register -->
+</div><!-- site-registerl -->

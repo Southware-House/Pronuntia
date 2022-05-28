@@ -134,7 +134,6 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
-                // form inputs are valid, do something here
                 $model->email = $_POST['Logopedista']['email'];
                 $model->passwd = password_hash($_POST['Logopedista']['passwd'], PASSWORD_DEFAULT);
                 $model->nome = $_POST['Logopedista']['nome'];
@@ -148,7 +147,7 @@ class SiteController extends Controller
                         'password' => 'root',
                     ]);
                     $connection->open();
-                    $command = $connection->createCommand("INSERT INTO Utente (email, passwd, isLogopedista) VALUES ('$model->email', '$model->passwd', True)");
+                    $command = $connection->createCommand("INSERT INTO Utente (id, email, passwd, isLogopedista) VALUES ($model->id, '$model->email', '$model->passwd', True)");
                     $command->execute();
                     return $this->redirect(['login']);
                 }
@@ -171,8 +170,26 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
+                $model->id = $_POST['Bambino']['id'];
+                $model->età = $_POST['Bambino']['età'];
+                $model->email = $_POST['Bambino']['email'];
+                $model->passwd = password_hash($_POST['Bambino']['passwd'], PASSWORD_DEFAULT);
+                $model->nome = $_POST['Bambino']['nome'];
+                $model->cognome = $_POST['Bambino']['cognome'];
+                $model->indirizzo = $_POST['Bambino']['indirizzo'];
+                $model->telefono = $_POST['Bambino']['telefono'];
+                $model->passwd_caregiver = password_hash($_POST['Bambino']['passwd_caregiver'], PASSWORD_DEFAULT);
+                if($model->save()) {
+                    $connection = new Connection([
+                        'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+                        'username' => 'root',
+                        'password' => 'root',
+                    ]);
+                    $connection->open();
+                    $command = $connection->createCommand("INSERT INTO Utente (id, email, passwd, isLogopedista) VALUES ($model->id, '$model->email', '$model->passwd', False)");
+                    $command->execute();
+                    return $this->redirect(['login']);
+                }
             }
         }
 
@@ -186,8 +203,6 @@ class SiteController extends Controller
         return $this->render('homel');
 
     }
-
-    public $id;
 
     public function actionGeneraCodice() {
         $email=Yii::$app->user->identity->email;

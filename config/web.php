@@ -2,6 +2,8 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$logopedista = \Yii::$app->Logopedista;
+$bambino = \Yii::$app->Bambino;
 
 $config = [
     'id' => 'basic',
@@ -19,14 +21,15 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
+        'logopedista' => [
+            'class'=>'yii\web\User',
             'identityClass' => 'app\models\Logopedista',
             'enableAutoLogin' => true,
             'enableSession' => true,
         ],
-        'user-two' => [
+        'bambino' => [
             'class' => 'yii\web\User',
-            'identityClass' => 'app\models\Associazione',
+            'identityClass' => 'app\models\Bambino',
             'enableAutoLogin' => true,
             'enableSession' => true,
         ],

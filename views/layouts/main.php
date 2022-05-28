@@ -78,7 +78,7 @@ AppAsset::register($this);
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
         <p class="float-left">&copy; Pronuntia <?= date('Y') ?></p>
-        <p class="float-right"> Developed by SouthwareHouse UNIBA </p>
+        <p class="float-right"> Developed by SouthwareHouse@UNIBA </p>
     </div>
 </footer>
 
