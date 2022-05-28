@@ -36,14 +36,26 @@ AppAsset::register($this);
         ],
     ]);
     $navItem = [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            /*['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],*/
     ];
     if(Yii::$app->user->isGuest) {
-        array_push($navItem, ['label' => 'Login', 'url' => ['/site/login']], ['label' => 'Register', 'url' => ['/site/sceltar']]);
+        array_push($navItem, ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Login', 'url' => ['/site/login']],
+            ['label' => 'Register', 'url' => ['/site/sceltar']]);
     }else {
-        array_push($navItem, '<li>'. Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline']). Html::submitButton('Logout ('. Yii::$app->user->identity->email.')',['class' => 'btn btn-link logout']).Html::endForm().'</li>');
+        //if() se logopedista
+            array_push($navItem, ['label' => 'Home', 'url' => ['/site/homel']]);
+        //else se bambino
+            //array_push...
+        array_push($navItem, ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']]);
+        array_push($navItem, '<li>'. Html::beginForm(['/site/logout'],
+                'post', ['class' => 'form-inline']). Html::submitButton('Logout ('. Yii::$app->user->identity->email.')',
+                ['class' => 'btn btn-link logout']).Html::endForm().'</li>');
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
@@ -66,7 +78,7 @@ AppAsset::register($this);
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
         <p class="float-left">&copy; Pronuntia <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
+        <p class="float-right"> Developed by SouthwareHouse UNIBA </p>
     </div>
 </footer>
 
