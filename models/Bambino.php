@@ -8,9 +8,9 @@ use yii\web\IdentityInterface;
 /**
  * This is the model class for table "Bambino".
  *
- * @property string $id
- * @property string|null $email
- * @property string|null $passwd
+ * @property int|null $id
+ * @property string $email
+ * @property string $passwd
  * @property string|null $nome
  * @property string|null $cognome
  * @property string|null $indirizzo
@@ -18,7 +18,7 @@ use yii\web\IdentityInterface;
  * @property int|null $età
  * @property string|null $passwd_caregiver
  */
-class Bambino extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class Bambino extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -55,7 +55,7 @@ class Bambino extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             'id' => 'ID',
             'email' => 'Email',
-            'passwd' => 'Passwd',
+            'passwd' => 'Password',
             'nome' => 'Nome',
             'cognome' => 'Cognome',
             'indirizzo' => 'Indirizzo',

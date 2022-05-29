@@ -107,4 +107,7 @@ interface IdentityInterface
      * @see getAuthKey()
      */
     public function validateAuthKey($authKey);
+
+
+    public function getEmail();
 }

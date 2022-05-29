@@ -68,7 +68,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Login Logopedista action.
      *
      * @return Response|string
      */
@@ -80,7 +80,8 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            $this->redirect(array('site/homel'));
+            return;
         }
 
         $model->password = '';
@@ -205,7 +206,7 @@ class SiteController extends Controller
     }
 
     public function actionGeneraCodice() {
-        $email=Yii::$app->user->identity->email;
+        $email=Yii::$app->user->identity->getEmail();
         $connection = new Connection([
             'dsn' => 'mysql:host=localhost;dbname=yii2basic',
             'username' => 'root',

@@ -7,7 +7,8 @@ use Yii;
 /**
  * This is the model class for table "logopedista".
  *
- * @property int $id
+ *
+ * @property int|null $id
  * @property string $email
  * @property string $passwd
  * @property string|null $nome
@@ -15,9 +16,10 @@ use Yii;
  * @property string|null $indirizzo
  * @property string|null $telefono
  *
+ *
  * @property Associazione[] $associaziones
  */
-class Logopedista extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class Logopedista extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

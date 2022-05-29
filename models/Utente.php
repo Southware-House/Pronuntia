@@ -11,6 +11,10 @@ use yii\web\IdentityInterface;
  * @property int|null $id
  * @property string $email
  * @property string $passwd
+ * @property string|null $nome
+ * @property string|null $cognome
+ * @property string|null $indirizzo
+ * @property string|null $telefono
  * @property int $isLogopedista
  */
 class Utente extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
@@ -45,7 +49,7 @@ class Utente extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             'id' => 'ID',
             'email' => 'Email',
-            'passwd' => 'Passwd',
+            'passwd' => 'Password',
             'isLogopedista' => 'Is Logopedista',
         ];
     }
