@@ -110,4 +110,6 @@ interface IdentityInterface
 
 
     public function getEmail();
+
+    public function isLogopedista();
 }

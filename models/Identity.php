@@ -15,6 +15,7 @@ final class Identity implements \yii\web\IdentityInterface
     private $_authkey;
     private $_passwordHash;
     private $_email;
+    private $_isLogopedista = false;
 
     public static function findIdentity($id)
     {
@@ -29,9 +30,11 @@ final class Identity implements \yii\web\IdentityInterface
         }
 
         $model = null;
+        $isLogopedista = false;
         switch ($type) {
             case self::TYPE_CUSTOMER:
                 $model = Logopedista::find()->where(['id' => $number])->one();
+                $isLogopedista = true;
                 break;
             case self::TYPE_SUPPLIER:
                 $model = Bambino::find()->where(['id' => $number])->one();
@@ -48,6 +51,7 @@ final class Identity implements \yii\web\IdentityInterface
         $identity->_authkey = $model->authkey;
         $identity->_passwordHash = $model->passwd;
         $identity->_email = $model->email;
+        $identity->_isLogopedista = $isLogopedista;
         return $identity;
     }
 
@@ -114,9 +118,10 @@ final class Identity implements \yii\web\IdentityInterface
         if (!$model) {
             return false;
         }
-
+        $isLogopedista = false;
         if ($model instanceof Logopedista) {
             $type = self::TYPE_CUSTOMER;
+            $isLogopedista = true;
         } else {
             $type = self::TYPE_SUPPLIER;
         }
@@ -126,6 +131,7 @@ final class Identity implements \yii\web\IdentityInterface
         $identity->_authkey = $model->authkey;
         $identity->_passwordHash = $model->passwd;
         $identity->_email = $model->email;
+        $identity->_isLogopedista = $isLogopedista;
         return $identity;
     }
 
@@ -147,5 +153,10 @@ final class Identity implements \yii\web\IdentityInterface
     public function getEmail()
     {
         return $this->_email;
+    }
+
+    public function isLogopedista()
+    {
+        return $this->_isLogopedista;
     }
 }

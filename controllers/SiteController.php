@@ -80,7 +80,10 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $this->redirect(array('site/homel'));
+            if(Yii::$app->user->identity->isLogopedista())
+                $this->redirect(array('site/homel'));
+            else
+                $this->goBack(); // redirigi a sito da definire
             return;
         }
 

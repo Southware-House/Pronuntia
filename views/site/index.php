@@ -2,7 +2,13 @@
 
 /** @var yii\web\View $this */
 
+use yii\helpers\Url;
 use app\controllers\SiteController;
+
+if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isLogopedista()){
+    return Yii::$app->response->redirect(Url::to(['site/homel', []]));
+}
+
 
 $this->title = 'Home';
 ?>
