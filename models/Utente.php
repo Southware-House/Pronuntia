@@ -17,7 +17,7 @@ use yii\web\IdentityInterface;
  * @property string|null $telefono
  * @property int $isLogopedista
  */
-class Utente extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class Utente extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
