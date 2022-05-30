@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 
-final class Identity implements \yii\web\IdentityInterface
+final class Persona implements \yii\web\IdentityInterface
 {
     const TYPE_CUSTOMER = 'logopedista';
     const TYPE_SUPPLIER = 'bambino';
@@ -46,7 +46,7 @@ final class Identity implements \yii\web\IdentityInterface
         }
 
 
-        $identity = new Identity();
+        $identity = new Persona();
         $identity->_id = $id;
         $identity->_authkey = $model->authkey;
         $identity->_passwordHash = $model->passwd;
@@ -72,7 +72,7 @@ final class Identity implements \yii\web\IdentityInterface
             $type = self::TYPE_SUPPLIER;
         }
 
-        $identity = new Identity();
+        $identity = new Persona();
         $identity->_id = $type . '-' . $model->id;
         $identity->_authkey = $model->authkey;
         $identity->_passwordHash = $model->passwd;
@@ -101,7 +101,7 @@ final class Identity implements \yii\web\IdentityInterface
             $type = self::TYPE_SUPPLIER;
         }
 
-        $identity = new Identity();
+        $identity = new Persona();
         $identity->_id = $type . '-' . $model->id;
         $identity->_authkey = $model->authkey;
         $identity->_passwordHash = $model->passwd;
@@ -126,7 +126,7 @@ final class Identity implements \yii\web\IdentityInterface
             $type = self::TYPE_SUPPLIER;
         }
 
-        $identity = new Identity();
+        $identity = new Persona();
         $identity->_id = $type . '-' . $model->id;
         $identity->_authkey = $model->authkey;
         $identity->_passwordHash = $model->passwd;

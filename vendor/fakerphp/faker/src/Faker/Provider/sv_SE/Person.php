@@ -117,7 +117,7 @@ class Person extends \Faker\Provider\Person
     ];
 
     /**
-     * National Personal Identity number (personnummer)
+     * National Personal Persona number (personnummer)
      *
      * @see http://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)
      *

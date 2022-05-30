@@ -21,7 +21,7 @@ $config = [
         ],
         'user' => [
             'class'=>'yii\web\User',
-            'identityClass' => 'app\models\Identity',
+            'identityClass' => 'app\models\Persona',
             'enableAutoLogin' => true,
             'enableSession' => true,
         ],

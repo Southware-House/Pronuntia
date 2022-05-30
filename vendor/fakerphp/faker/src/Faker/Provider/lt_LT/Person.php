@@ -320,7 +320,7 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * National Personal Identity number (asmens kodas)
+     * National Personal Persona number (asmens kodas)
      *
      * @see https://en.wikipedia.org/wiki/National_identification_number#Lithuania
      * @see https://lt.wikipedia.org/wiki/Asmens_kodas

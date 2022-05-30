@@ -131,7 +131,7 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * National Personal Identity number (personas kods)
+     * National Personal Persona number (personas kods)
      *
      * @see https://en.wikipedia.org/wiki/National_identification_number#Latvia
      *

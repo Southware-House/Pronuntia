@@ -74,7 +74,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false)
-                $this->_user = Identity::findIdentityByEmail($this->email);
+                $this->_user = Persona::findIdentityByEmail($this->email);
 
         return $this->_user;
     }

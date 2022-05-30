@@ -87,7 +87,7 @@ class Person extends \Faker\Provider\Person
     protected static $titleFemale = ['Rva.', 'Nti.', 'Tri.'];
 
     /**
-     * National Personal Identity Number (Henkilötunnus)
+     * National Personal Persona Number (Henkilötunnus)
      *
      * @see http://www.finlex.fi/fi/laki/ajantasa/2010/20100128
      *

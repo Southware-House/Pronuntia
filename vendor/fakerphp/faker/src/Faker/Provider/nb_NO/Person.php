@@ -284,7 +284,7 @@ class Person extends \Faker\Provider\Person
     ];
 
     /**
-     * National Personal Identity number (personnummer)
+     * National Personal Persona number (personnummer)
      *
      * @see https://no.wikipedia.org/wiki/Personnummer
      *

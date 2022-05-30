@@ -96,7 +96,7 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * National Personal Identity number (tc kimlik no)
+     * National Personal Persona number (tc kimlik no)
      *
      * @see https://en.wikipedia.org/wiki/Turkish_Identification_Number
      *
@@ -111,7 +111,7 @@ class Person extends \Faker\Provider\Person
     }
 
     /**
-     * Generates Turkish Identity Number Checksum
+     * Generates Turkish Persona Number Checksum
      * Gets first 9 digit as prefix and calculates checksum
      *
      * @see https://en.wikipedia.org/wiki/Turkish_Identification_Number

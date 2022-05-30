@@ -9,7 +9,7 @@ namespace Faker\Calculator;
 class TCNo
 {
     /**
-     * Generates Turkish Identity Number Checksum
+     * Generates Turkish Persona Number Checksum
      * Gets first 9 digit as prefix and calculates checksum
      *
      * https://en.wikipedia.org/wiki/Turkish_Identification_Number

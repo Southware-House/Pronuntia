@@ -5,7 +5,7 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
-use app\models\Identity;
+use app\models\Persona;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;

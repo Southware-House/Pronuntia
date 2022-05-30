@@ -251,7 +251,7 @@ class PhoneNumber extends Base
     }
 
     /**
-     * International Mobile Equipment Identity (IMEI)
+     * International Mobile Equipment Persona (IMEI)
      *
      * @see http://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
      * @see http://imei-number.com/imei-validation-check/

@@ -98,7 +98,7 @@ return array(
     'PHPUnit\\Framework\\MissingCoversAnnotationException' => $vendorDir . '/phpunit/phpunit/src/Framework/Exception/MissingCoversAnnotationException.php',
     'PHPUnit\\Framework\\MockObject\\Api' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Api/Api.php',
     'PHPUnit\\Framework\\MockObject\\BadMethodCallException' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Exception/BadMethodCallException.php',
-    'PHPUnit\\Framework\\MockObject\\Builder\\Identity' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Identity.php',
+    'PHPUnit\\Framework\\MockObject\\Builder\\Identity' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Persona.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\InvocationMocker' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/InvocationMocker.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/InvocationStubber.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\Match_' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Match_.php',
