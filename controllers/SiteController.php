@@ -81,9 +81,9 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             if(Yii::$app->user->identity->isLogopedista())
-                $this->redirect(array('site/homel'));
+                $this->redirect(array('site/home-logopedista'));
             else
-                $this->goBack(); // redirigi a sito da definire
+                $this->redirect(array('site/home-bambino'));
             return;
         }
 
@@ -133,7 +133,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionRegisterl() {
+    public function actionRegisterLogopedista() {
         $model = new Logopedista();
 
         if ($model->load(Yii::$app->request->post())) {
@@ -145,31 +145,23 @@ class SiteController extends Controller
                 $model->indirizzo = $_POST['Logopedista']['indirizzo'];
                 $model->telefono = $_POST['Logopedista']['telefono'];
                 if($model->save()) {
-                    $connection = new Connection([
-                        'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-                        'username' => 'root',
-                        'password' => 'root',
-                    ]);
-                    $connection->open();
-                    $command = $connection->createCommand("INSERT INTO Utente (id, email, passwd, isLogopedista) VALUES ($model->id, '$model->email', '$model->passwd', True)");
-                    $command->execute();
                     return $this->redirect(['login']);
                 }
             }
         }
 
-        return $this->render('registerl', [
+        return $this->render('register-logopedista', [
             'model' => $model,
         ]);
     }
 
-    public function actionSceltar() {
+    public function actionSceltaRegistrazione() {
 
-        return $this->render('sceltar');
+        return $this->render('scelta-registrazione');
 
     }
 
-    public function actionRegisterb() {
+    public function actionRegisterBambino() {
         $model = new Bambino();
 
         if ($model->load(Yii::$app->request->post())) {
@@ -184,27 +176,19 @@ class SiteController extends Controller
                 $model->telefono = $_POST['Bambino']['telefono'];
                 $model->passwd_caregiver = password_hash($_POST['Bambino']['passwd_caregiver'], PASSWORD_DEFAULT);
                 if($model->save()) {
-                    $connection = new Connection([
-                        'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-                        'username' => 'root',
-                        'password' => 'root',
-                    ]);
-                    $connection->open();
-                    $command = $connection->createCommand("INSERT INTO Utente (id, email, passwd, isLogopedista) VALUES ($model->id, '$model->email', '$model->passwd', False)");
-                    $command->execute();
                     return $this->redirect(['login']);
                 }
             }
         }
 
-        return $this->render('registerb', [
+        return $this->render('register-bambino', [
             'model' => $model,
         ]);
     }
 
-    public function actionHomel() {
+    public function actionHomeLogopedista() {
 
-        return $this->render('homel');
+        return $this->render('home-logopedista');
 
     }
 
@@ -221,6 +205,12 @@ class SiteController extends Controller
         $command = $connection->createCommand("SELECT max(id_bambino) as id FROM Associazione")->queryScalar();
         //$command->execute();
         return $this->render('genera-codice', array('id'=>$command));
+
+    }
+
+    public function actionHomeBambino() {
+
+        return $this->render('home-bambino');
 
     }
 }

@@ -45,12 +45,15 @@ AppAsset::register($this);
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Login', 'url' => ['/site/login']],
-            ['label' => 'Register', 'url' => ['/site/sceltar']]);
+            ['label' => 'Registrazione', 'url' => ['/site/scelta-registrazione']]);
     }else {
         //if() se logopedista
-            array_push($navItem, ['label' => 'Home', 'url' => ['/site/homel']]);
-        //else se bambino
-            //array_push...
+        if(Yii::$app->user->identity->isLogopedista()) {
+            array_push($navItem, ['label' => 'Home', 'url' => ['/site/home-logopedista']]);
+        }
+        else {
+            array_push($navItem, ['label' => 'Home', 'url' => ['/site/home-bambino']]);
+        }
         array_push($navItem, ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']]);
         array_push($navItem, '<li>'. Html::beginForm(['/site/logout'],
