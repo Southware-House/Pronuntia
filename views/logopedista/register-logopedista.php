@@ -6,11 +6,11 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Logopedista */
 /* @var $form ActiveForm */
-$this->title = 'Register';
+$this->title = 'Registrazione logopedista';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="site-registerl">
+<div class="logopedista-register-logopedista">
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
@@ -36,4 +36,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- site-registerl -->
+</div>

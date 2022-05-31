@@ -2,7 +2,6 @@
 
 /** @var yii\web\View $this */
 
-use app\controllers\SiteController;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Nav;
 
@@ -19,8 +18,8 @@ $this->title = 'Registrazione';
         NavBar::begin(['brandLabel' => false]);
         echo Nav::widget([
             'items' => [
-                ['label' => 'Registrazione Logopedista', 'url' => ['/site/register-logopedista']],
-                ['label' => 'Registrazione Paziente', 'url' => ['/site/register-bambino']],
+                ['label' => 'Registrazione Logopedista', 'url' => ['/logopedista/register-logopedista']],
+                ['label' => 'Registrazione Paziente', 'url' => ['/bambino/register-bambino']],
             ],
             'options' => ['class' => 'navbar-nav'],
         ]);

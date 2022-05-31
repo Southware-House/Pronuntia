@@ -8,7 +8,7 @@ use yii\helpers\Html;
 
 $this->title = 'Home';
 ?>
-<div class="site-homel">
+<div class="bambino-home-bambino">
 
     <div class="jumbotron text-center bg-transparent">
         <h1 class="display-4">HOME BAMBINO</h1>

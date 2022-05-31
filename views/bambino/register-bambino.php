@@ -6,8 +6,11 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Bambino */
 /* @var $form ActiveForm */
+$this->title = 'Registrazione bambino';
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="site-registerb">
+<div class="bambino-register-bambino">
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
@@ -29,6 +32,7 @@ use yii\bootstrap4\ActiveForm;
         <?= $form->field($model, 'cognome')->textInput() ?>
         <?= $form->field($model, 'indirizzo')->textInput() ?>
         <?= $form->field($model, 'telefono')->textInput() ?>
+    <p><b>Inserire nel campo seguente la password per accedere alla sezione del caregiver:</b></p>
         <?= $form->field($model, 'passwd_caregiver')->passwordInput() ?>
     
         <div class="form-group">
@@ -36,4 +40,4 @@ use yii\bootstrap4\ActiveForm;
         </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- site-registerb -->
+</div>

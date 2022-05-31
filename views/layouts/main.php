@@ -35,11 +35,7 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $navItem = [
-            /*['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],*/
-    ];
+    $navItem = [];
     if(Yii::$app->user->isGuest) {
         array_push($navItem, ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
@@ -49,10 +45,10 @@ AppAsset::register($this);
     }else {
         //if() se logopedista
         if(Yii::$app->user->identity->isLogopedista()) {
-            array_push($navItem, ['label' => 'Home', 'url' => ['/site/home-logopedista']]);
+            array_push($navItem, ['label' => 'Home', 'url' => ['/logopedista/home-logopedista']]);
         }
         else {
-            array_push($navItem, ['label' => 'Home', 'url' => ['/site/home-bambino']]);
+            array_push($navItem, ['label' => 'Home', 'url' => ['/bambino/home-bambino']]);
         }
         array_push($navItem, ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']]);
