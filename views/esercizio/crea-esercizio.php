@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'traccia')->textInput() ?>
     <?= $form->field($model, 'file_audio')->textInput() ?>
-    <?= $form->field($model, 'immagini')->fileInput() ?>
+    <?= $form->field($model, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>

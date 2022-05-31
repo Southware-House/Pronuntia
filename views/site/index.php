@@ -6,8 +6,9 @@ use yii\helpers\Url;
 use app\controllers\SiteController;
 
 if(!Yii::$app->user->isGuest && Yii::$app->user->identity->isLogopedista()){
-    return Yii::$app->response->redirect(Url::to(['site/homel', []]));
-}
+    return Yii::$app->response->redirect(Url::to(['logopedista/home-logopedista', []]));
+} else if(!Yii::$app->user->isGuest && !Yii::$app->user->identity->isLogopedista())
+    return Yii::$app->response->redirect(Url::to(['bambino/home-bambino', []]));
 
 
 $this->title = 'Home';
