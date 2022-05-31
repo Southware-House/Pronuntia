@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Esercizio;
 
 /**
  * This is the model class for table "logopedista".
@@ -98,5 +99,9 @@ class Logopedista extends \yii\db\ActiveRecord
 
     public function validatePassword($passwd){
         return password_verify($passwd, $this->passwd);
+    }
+
+    public function creaEsercizio($traccia, $file_audio, $immagini) {
+        $esercizio = new Esercizio( null, $this->id, $traccia, $file_audio, $immagini, false);
     }
 }

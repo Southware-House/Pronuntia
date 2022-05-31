@@ -43,7 +43,6 @@ AppAsset::register($this);
             ['label' => 'Login', 'url' => ['/site/login']],
             ['label' => 'Registrazione', 'url' => ['/site/scelta-registrazione']]);
     }else {
-        //if() se logopedista
         if(Yii::$app->user->identity->isLogopedista()) {
             array_push($navItem, ['label' => 'Home', 'url' => ['/logopedista/home-logopedista']]);
         }

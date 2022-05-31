@@ -28,9 +28,11 @@ $this->title = 'Home';
         <div class="col-sm-6">
             <div class="card text-center">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">CREA ESERCIZIO</h5>
+                    <p class="card-text">Crea un esercizio da aggiungere ad una lista esercizi.</p>
+                    <?= Html::beginForm(['/esercizio/crea-esercizio'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                        <?= Html::submitButton('CREA!', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
                 </div>
             </div>
         </div>
