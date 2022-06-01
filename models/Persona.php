@@ -2,9 +2,9 @@
 
 namespace app\models;
 
-use Yii;
+use yii\web\IdentityInterface;
 
-final class Persona implements \yii\web\IdentityInterface
+final class Persona implements IdentityInterface
 {
     const TYPE_CUSTOMER = 'logopedista';
     const TYPE_SUPPLIER = 'bambino';
