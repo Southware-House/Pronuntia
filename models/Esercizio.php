@@ -35,7 +35,7 @@ class Esercizio extends \yii\db\ActiveRecord
         return [
             [['id_lista_esercizi', 'id_logopedista', 'is_svolto'], 'integer'],
             [['traccia', 'file_audio', 'immagini'], 'string', 'max' => 510],
-            [['imageFiles'], 'file', 'extensions' => 'png,jpg']
+            [['imageFiles'], 'file', 'extensions' => 'png,jpg', 'maxFiles' => 4]
         ];
     }
 
