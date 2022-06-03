@@ -26,8 +26,33 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'nome')->textInput() ?>
 
-    <?= $form->field($model, 'id')->dropdownList($esercizi, ['prompt'=>'Seleziona gli esercizi']) ?>
+    <div class="row align-items-center">
+        <div class="col">
+            <b>ID Esercizio</b>
+            <?php
+            for ($i = 0; $i < $numero_esercizi; $i++) {
+                echo "<br>";
+                echo $esercizi[$i]['id'];
+                echo "<br>";
+            }
+            ?>
+        </div>
+        <div class="col">
+            <b>Titolo Esercizio</b>
+            <?php
+            for ($i = 0; $i < $numero_esercizi; $i++) {
+                echo "<br>";
+                echo $esercizi[$i]['titolo'];
+                echo "<br>";
+            }
+            ?>
+        </div>
+        <div class="col">
 
+        </div>
+    </div>
+
+    <br>
     <div class="form-group">
         <?= Html::submitButton('Crea lista esercizi', ['class' => 'btn btn-primary']) ?>
     </div>
