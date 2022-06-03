@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Esercizio */
+/* @var $model app\models\ListaEsercizi */
 /* @var $form ActiveForm */
 $this->title = 'Creazione lista esercizi';
 $this->params['breadcrumbs'][] = $this->title;
@@ -26,8 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'nome')->textInput() ?>
 
+    <?= $form->field($model, 'id')->dropdownList($esercizi, ['prompt'=>'Seleziona gli esercizi']) ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Crea lista esercizi', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 

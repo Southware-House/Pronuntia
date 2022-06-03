@@ -43,7 +43,6 @@ class LogopedistaController extends Controller
         $command = $connection->createCommand("INSERT INTO Associazione (email_logo) VALUES ('$email')");
         $command->execute();
         $command = $connection->createCommand("SELECT max(id_bambino) as id FROM Associazione")->queryScalar();
-        //$command->execute();
         return $this->render('genera-codice', array('id'=>$command));
     }
 
