@@ -10,7 +10,7 @@ $this->title = 'Creazione esercizio';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="bambino-register-bambino">
+<div class="esercizio-crea-esercizio">
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([

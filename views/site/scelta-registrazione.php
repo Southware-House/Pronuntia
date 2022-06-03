@@ -7,7 +7,7 @@ use yii\bootstrap4\Nav;
 
 $this->title = 'Registrazione';
 ?>
-<div class="site-index">
+<div class="site-scelta-registrazione">
 
     <div class="jumbotron text-center bg-transparent">
         <h1 class="display-4">Sei un logopedista o un paziente?</h1>
