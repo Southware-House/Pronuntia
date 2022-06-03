@@ -38,4 +38,20 @@ $this->title = 'Home';
         </div>
     </div>
 
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">CREA LISTA ESERCIZI</h5>
+                    <p class="card-text">Crea una lista esercizi da assegnare al bambino.</p>
+                    <?= Html::beginForm(['/esercizio/crea-lista-esercizi'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('CREA!', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

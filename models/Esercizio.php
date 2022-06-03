@@ -7,11 +7,11 @@ use Yii;
 /**
  * This is the model class for table "Esercizio".
  *
- * @property int $id_esercizio
- * @property int|null $id_lista_esercizi
+ * @property int $id
  * @property int|null $id_logopedista
+ * @property string|null $titolo
  * @property string|null $traccia
- * @property string|null $file_audio
+ * @property string|null $files_audio
  * @property string|null $immagini
  * @property int|null $is_svolto
  */
@@ -26,6 +26,7 @@ class Esercizio extends \yii\db\ActiveRecord
     }
 
     public $imageFiles;
+    public $audioFiles;
 
     /**
      * {@inheritdoc}
@@ -33,9 +34,12 @@ class Esercizio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_lista_esercizi', 'id_logopedista', 'is_svolto'], 'integer'],
-            [['traccia', 'file_audio', 'immagini'], 'string', 'max' => 510],
-            [['imageFiles'], 'file', 'extensions' => 'png,jpg', 'maxFiles' => 4]
+            [['id_logopedista', 'is_svolto'], 'integer'],
+            [['traccia', 'files_audio', 'immagini'], 'string', 'max' => 510],
+            [['titolo'], 'string', 'max' => 30],
+            [['audioFiles'], 'file', 'extensions' => 'mp3,wav,ogg', 'maxFiles' => 4],
+            [['imageFiles'], 'file', 'extensions' => 'png,jpg', 'maxFiles' => 4],
+            [['id_logopedista'], 'exist', 'skipOnError' => true, 'targetClass' => Logopedista::className(), 'targetAttribute' => ['id_logopedista' => 'id']]
         ];
     }
 
@@ -45,11 +49,11 @@ class Esercizio extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_esercizio' => 'Id Esercizio',
-            'id_lista_esercizi' => 'Id Lista Esercizi',
+            'id' => 'Id',
             'id_logopedista' => 'Id Logopedista',
+            'titolo' => 'Titolo',
             'traccia' => 'Traccia',
-            'file_audio' => 'File Audio',
+            'files_audio' => 'Files Audio',
             'imageFiles' => 'Immagini',
             'is_svolto' => 'Is Svolto',
         ];

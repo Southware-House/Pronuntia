@@ -24,9 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'traccia')->textInput() ?>
-    <?= $form->field($model, 'file_audio')->textInput() ?>
+    <?= $form->field($model, 'traccia')->textarea() ?>
+    <?= $form->field($model, 'titolo')->textInput() ?>
+    <?= $form->field($model, 'audioFiles[]')->fileInput(['multiple' => true, 'accept' => 'audio/*']) ?>
+    <br>
     <?= $form->field($model, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
+    <br>
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
