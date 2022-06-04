@@ -55,7 +55,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
         </tbody>
     </table>
-
+    <?php
+        if(isset($err)) {
+            echo '<p class=\'font-weight-bold\' style="color: red">Esercizio aggiunto non valido!</p>';
+        }
+    ?>
     <br>
     <div class="form-group">
         <?= Html::submitButton('Crea lista esercizi', ['class' => 'btn btn-primary']) ?>

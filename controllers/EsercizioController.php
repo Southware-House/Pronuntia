@@ -75,7 +75,7 @@ class EsercizioController extends Controller
                     $command5->execute();
                     $command4 = $connection->createCommand("DELETE FROM lista_esercizi WHERE lista_esercizi.id like $idLista");
                     $command4->execute();
-                    return $this->render('errore-lista-esercizi');
+                    return $this->render('crea-lista-esercizi', array('model'=>$model, 'numero_esercizi'=>$numeroEsercizi, 'esercizi'=>$command2, 'err' => true)); //errore
                 }
                 $command3 = $connection->createCommand("INSERT INTO associazione_esercizio (id_lista_esercizi, id_esercizio) VALUES ($idLista, '$listaEsercizi[$i]')");
                 $command3->execute();
