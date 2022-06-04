@@ -63,12 +63,23 @@ class EsercizioController extends Controller
         $numeroEsercizi = count($command);
         $command2 = $connection->createCommand("SELECT * FROM Esercizio WHERE id_logopedista like '$id[1]'")->queryAll();
 
-        //$esercizi = Esercizio::find()->where(['id_logopedista' => $id[1]])->all();
-        //$esercizi = ArrayHelper::map(Esercizio::find()->where(['id_logopedista' => $id[1]])->all(), 'id', 'titolo');
-
         if ($model->load(Yii::$app->request->post())) {
             $model->id_logopedista = $id[1];
             $model->save();
+            $listaEsercizi = explode(",", $model->getlista_id());
+            $idLista = $model->getId();
+            $numeroId = count($listaEsercizi);
+            for($i = 0; $i < $numeroId; $i++) {
+                if(!in_array($listaEsercizi[$i],$command)) {
+                    $command5 = $connection->createCommand("DELETE FROM associazione_esercizio WHERE associazione_esercizio.id_lista_esercizi like $idLista");
+                    $command5->execute();
+                    $command4 = $connection->createCommand("DELETE FROM lista_esercizi WHERE lista_esercizi.id like $idLista");
+                    $command4->execute();
+                    return $this->render('errore-lista-esercizi');
+                }
+                $command3 = $connection->createCommand("INSERT INTO associazione_esercizio (id_lista_esercizi, id_esercizio) VALUES ($idLista, '$listaEsercizi[$i]')");
+                $command3->execute();
+            }
             return $this->redirect(['/logopedista/home-logopedista']);
         }
 

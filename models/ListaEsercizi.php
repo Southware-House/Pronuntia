@@ -9,7 +9,8 @@ use Yii;
  *
  * @property int $id
  * @property int|null $id_logopedista
- * @property string|null $nome
+ * @property string $nome
+ * @property string $lista_id
  *
  * @property AssociazioneEsercizio[] $associazioneEsercizios
  * @property Esercizio[] $esercizios
@@ -32,7 +33,8 @@ class ListaEsercizi extends \yii\db\ActiveRecord
     {
         return [
             [['id_logopedista'], 'integer'],
-            [['nome'], 'string', 'max' => 510],
+            [['lista_id', 'nome'], 'required'],
+            [['nome', 'lista_id'], 'string', 'max' => 510],
             [['id_logopedista'], 'exist', 'skipOnError' => true, 'targetClass' => Logopedista::className(), 'targetAttribute' => ['id_logopedista' => 'id']],
         ];
     }
@@ -45,7 +47,8 @@ class ListaEsercizi extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_logopedista' => 'Id Logopedista',
-            'nome' => 'Nome',
+            'nome' => 'Nome Lista',
+            'lista_id' => 'Lista ID esercizi',
         ];
     }
 
@@ -77,5 +80,13 @@ class ListaEsercizi extends \yii\db\ActiveRecord
     public function getLogopedista()
     {
         return $this->hasOne(Logopedista::className(), ['id' => 'id_logopedista']);
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getlista_id() {
+        return $this->lista_id;
     }
 }

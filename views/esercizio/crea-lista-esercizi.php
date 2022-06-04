@@ -18,39 +18,43 @@ $this->params['breadcrumbs'][] = $this->title;
         'options' => ['enctype' => 'multipart/form-data'],
         'fieldConfig' => [
             'template' => "{label}\n{input}\n{error}",
-            'labelOptions' => ['class' => 'col-lg-1 col-form-label mr-lg-3'],
+            'labelOptions' => ['class' => 'col-lg-2 col-form-label mr-lg-3'],
             'inputOptions' => ['class' => 'col-lg-3 form-control'],
             'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
         ],
     ]); ?>
 
     <?= $form->field($model, 'nome')->textInput() ?>
+    <br>
+    <b>Inserire nel campo seguente gli ID degli esercizi che si vogliono aggiungere alla lista nel formato: 3,18,15,28</b>
+    <br>
+    <br>
+    <?= $form->field($model, 'lista_id')->textInput() ?>
+    <br>
 
-    <div class="row align-items-center">
-        <div class="col">
-            <b>ID Esercizio</b>
-            <?php
-            for ($i = 0; $i < $numero_esercizi; $i++) {
-                echo "<br>";
-                echo $esercizi[$i]['id'];
-                echo "<br>";
-            }
-            ?>
-        </div>
-        <div class="col">
-            <b>Titolo Esercizio</b>
-            <?php
-            for ($i = 0; $i < $numero_esercizi; $i++) {
-                echo "<br>";
-                echo $esercizi[$i]['titolo'];
-                echo "<br>";
-            }
-            ?>
-        </div>
-        <div class="col">
-
-        </div>
-    </div>
+    <table class="table table-bordered table-condensed table-striped table-hover">
+        <caption>Lista di esercizi disponibili</caption>
+        <thead>
+        <tr>
+            <th scope="col">ID Esercizio</th>
+            <th scope="col">Titolo Esercizio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        for ($i = 0; $i < $numero_esercizi; $i++) {
+            echo "<tr>";
+            echo "<td>";
+            echo $esercizi[$i]['id'];
+            echo "</td>";
+            echo "<td>";
+            echo $esercizi[$i]['titolo'];
+            echo "</td>";
+            echo "</tr>";
+        }
+        ?>
+        </tbody>
+    </table>
 
     <br>
     <div class="form-group">
