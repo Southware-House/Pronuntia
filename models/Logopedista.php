@@ -101,7 +101,4 @@ class Logopedista extends \yii\db\ActiveRecord
         return password_verify($passwd, $this->passwd);
     }
 
-    public function creaEsercizio($traccia, $file_audio, $immagini) {
-        $esercizio = new Esercizio( null, $this->id, $traccia, $file_audio, $immagini, false);
-    }
 }
