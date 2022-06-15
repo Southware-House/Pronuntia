@@ -13,7 +13,6 @@ use Yii;
  * @property string|null $traccia
  * @property string|null $files_audio
  * @property string|null $immagini
- * @property int|null $is_svolto
  */
 class Esercizio extends \yii\db\ActiveRecord
 {
@@ -34,7 +33,7 @@ class Esercizio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_logopedista', 'is_svolto'], 'integer'],
+            [['id_logopedista'], 'integer'],
             [['traccia', 'files_audio', 'immagini'], 'string', 'max' => 510],
             [['titolo'], 'string', 'max' => 30],
             [['audioFiles'], 'file', 'extensions' => 'mp3,wav,ogg', 'maxFiles' => 4],
@@ -55,7 +54,6 @@ class Esercizio extends \yii\db\ActiveRecord
             'traccia' => 'Traccia',
             'files_audio' => 'Files Audio',
             'imageFiles' => 'Immagini',
-            'is_svolto' => 'Is Svolto',
         ];
     }
 }
