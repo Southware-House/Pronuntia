@@ -77,11 +77,11 @@ class Logopedista extends \yii\db\ActiveRecord
         return self::findOne(['accessToken' => $token]);
     }
 
-    public static function findByEmail($email) { //nuova funzione messa da me (giuseppe)
+    public static function findByEmail($email) {
         return self::findOne(['email' => $email]);
     }
 
-    public function getEmail() { //nuova funzione messa da me (giuseppe)
+    public function getEmail() {
         return $this->email;
     }
 

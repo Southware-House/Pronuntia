@@ -111,7 +111,7 @@ final class Persona implements IdentityInterface
     public static function findIdentityByEmail($email)
     {
         $model = Logopedista::find()->where(['email' => $email])->one();
-        if (!$model) {
+        if ($model == null) {
             $model = Bambino::find()->where(['email' => $email])->one();
         }
 

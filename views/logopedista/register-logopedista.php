@@ -24,6 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+        <?php
+        if(isset($_GET['check'])) {
+            echo '<b style = \'color:red\' > Email già esistente. Inserire un\'altra email.</b><br><br> ';
+        }
+        ?>
         <?= $form->field($model, 'email')->textInput() ?>
         <?= $form->field($model, 'passwd')->passwordInput() ?>
         <?= $form->field($model, 'cognome')->textInput() ?>

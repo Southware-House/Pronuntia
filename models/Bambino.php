@@ -38,10 +38,13 @@ class Bambino extends \yii\db\ActiveRecord
             [['età'], 'integer'],
             [['id'], 'string', 'max' => 6],
             [['email'], 'string', 'max' => 50],
+            [['email'], 'required'],
             [['passwd'], 'string', 'max' => 255],
+            [['passwd'], 'required'],
             [['nome', 'cognome', 'indirizzo'], 'string', 'max' => 30],
             [['telefono'], 'string', 'max' => 10],
             [['passwd_caregiver'], 'string', 'max' => 255],
+            [['passwd_caregiver'], 'required'],
             [['id'], 'unique'],
             [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Associazione::className(), 'targetAttribute' => ['id' => 'id_bambino']],
         ];
@@ -61,7 +64,7 @@ class Bambino extends \yii\db\ActiveRecord
             'indirizzo' => 'Indirizzo',
             'telefono' => 'Telefono',
             'età' => 'Età',
-            'passwd_caregiver' => 'Passwd Caregiver',
+            'passwd_caregiver' => 'Password Caregiver',
         ];
     }
 

@@ -13,14 +13,13 @@ class BambinoController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
-                $model->id = $_POST['Bambino']['id'];
-                $model->età = $_POST['Bambino']['età'];
-                $model->email = $_POST['Bambino']['email'];
+                $query = (new \yii\db\Query())->select("email")->from('logopedista')->where(['email'=>$model->email]);
+                $query2 = (new \yii\db\Query())->select("email")->from('bambino')->where(['email'=>$model->email]);
+                $rows = $query->union($query2)->count();
+                if($rows != 0){
+                    return $this->redirect(array('/bambino/register-bambino', 'check'=>false));
+                }
                 $model->passwd = password_hash($_POST['Bambino']['passwd'], PASSWORD_DEFAULT);
-                $model->nome = $_POST['Bambino']['nome'];
-                $model->cognome = $_POST['Bambino']['cognome'];
-                $model->indirizzo = $_POST['Bambino']['indirizzo'];
-                $model->telefono = $_POST['Bambino']['telefono'];
                 $model->passwd_caregiver = password_hash($_POST['Bambino']['passwd_caregiver'], PASSWORD_DEFAULT);
                 if($model->save()) {
                     return $this->redirect(['/site/login']);

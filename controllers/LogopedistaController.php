@@ -14,19 +14,19 @@ class LogopedistaController extends Controller
         $model = new Logopedista();
 
         if ($model->load(Yii::$app->request->post())) {
+            $query = (new \yii\db\Query())->select("email")->from('logopedista')->where(['email'=>$model->email]);
+            $query2 = (new \yii\db\Query())->select("email")->from('bambino')->where(['email'=>$model->email]);
+            $rows = $query->union($query2)->count();
+            if($rows != 0){
+                return $this->redirect(array('/logopedista/register-logopedista', 'check'=>false));
+            }
             if ($model->validate()) {
-                $model->email = $_POST['Logopedista']['email'];
-                $model->passwd = password_hash($_POST['Logopedista']['passwd'], PASSWORD_DEFAULT);
-                $model->nome = $_POST['Logopedista']['nome'];
-                $model->cognome = $_POST['Logopedista']['cognome'];
-                $model->indirizzo = $_POST['Logopedista']['indirizzo'];
-                $model->telefono = $_POST['Logopedista']['telefono'];
+                $model->passwd = password_hash($model->passwd, PASSWORD_DEFAULT);
                 if ($model->save()) {
                     return $this->redirect(['/site/login']);
                 }
             }
         }
-
         return $this->render('register-logopedista', [
             'model' => $model,
         ]);
