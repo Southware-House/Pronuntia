@@ -89,4 +89,8 @@ class ListaEsercizi extends \yii\db\ActiveRecord
     public function getlista_id() {
         return $this->lista_id;
     }
+
+    public function getNome() {
+        return $this->nome;
+    }
 }

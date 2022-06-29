@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\ListaEsercizi;
+use app\models\Assegnazione;
+use app\models\Bambino;
 use Yii;
 use yii\db\Connection;
 use yii\web\Controller;
@@ -84,6 +86,41 @@ class EsercizioController extends Controller
         }
 
         return $this->render('crea-lista-esercizi', array('model'=>$model, 'numero_esercizi'=>$numeroEsercizi, 'esercizi'=>$command2));
+
+    }
+
+    public function actionAssegnazioneListaEsercizi() {
+
+        $model = new Assegnazione();
+        $id = explode("-", Yii::$app->user->identity->getId());
+
+        $query = (new \yii\db\Query())->select('*')->from('lista_esercizi')->where(['id_logopedista'=>$id[1]])->all();
+        $numeroListe = count($query);
+
+        $query2 = (new \yii\db\Query())->select(['bambino.id', 'bambino.nome', 'bambino.cognome', 'bambino.email'])->from(['bambino', 'associazione', 'logopedista'])->where("bambino.id like associazione.id_bambino and associazione.email_logo like logopedista.email and logopedista.id like '$id[1]'")->all();
+        $numeroBambini = count($query2);
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                $query3 = (new \yii\db\Query())->select('lista_id')->from('lista_esercizi')->where(['id'=>$model->id_lista])->all();
+                $lista_id = explode(",", $query3[0]['lista_id']);
+                $numeroEsercizi = count($lista_id);
+                $connection = new Connection([
+                    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+                    'username' => 'root',
+                    'password' => 'root',
+                ]);
+                $connection->open();
+                for ($i = 0; $i < $numeroEsercizi; $i++) {
+                    $command = $connection->createCommand("insert into svolgimento_esercizio (id_esercizio, id_bambino) values ('$lista_id[$i]', '$model->id_bambino') ");
+                    $command->execute();
+                }
+
+                return $this->redirect(['/logopedista/home-logopedista']);
+            }
+        }
+
+        return $this->render('assegnazione-lista-esercizi', array('model'=>$model, 'numeroListe'=>$numeroListe, 'liste'=>$query, 'numeroBambini'=>$numeroBambini, 'bambini'=>$query2));
 
     }
 
