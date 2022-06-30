@@ -12,8 +12,8 @@ use Yii;
  * @property string $nome
  * @property string $lista_id
  *
- * @property AssociazioneEsercizio[] $associazioneEsercizios
- * @property Esercizio[] $esercizios
+ * @property AssociazioneEsercizio[] $associazioneEsercizio
+ * @property Esercizio[] $esercizio
  * @property Logopedista $logopedista
  */
 class ListaEsercizi extends \yii\db\ActiveRecord
@@ -53,21 +53,21 @@ class ListaEsercizi extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[AssociazioneEsercizios]].
+     * Gets query for [[AssociazioneEsercizio]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getAssociazioneEsercizios()
+    public function getAssociazioneEsercizio()
     {
         return $this->hasMany(AssociazioneEsercizio::className(), ['id_lista_esercizi' => 'id']);
     }
 
     /**
-     * Gets query for [[Esercizios]].
+     * Gets query for [[Esercizio]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getEsercizios()
+    public function getEsercizio()
     {
         return $this->hasMany(Esercizio::className(), ['id' => 'id_esercizio'])->viaTable('associazione_esercizio', ['id_lista_esercizi' => 'id']);
     }
