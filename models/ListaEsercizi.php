@@ -93,4 +93,8 @@ class ListaEsercizi extends \yii\db\ActiveRecord
     public function getNome() {
         return $this->nome;
     }
+
+    public function prova() {
+        return $this->id_logopedista;
+    }
 }

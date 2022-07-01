@@ -1,8 +1,5 @@
 <?php
 
-//cancellare use connection (è per prova)
-use yii\db\Connection;
-
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
@@ -100,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <br>
     <div class="form-group">
-        <?= Html::submitButton('Crea lista esercizi', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Assegna', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
