@@ -44,19 +44,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id_logopedista')->textInput() ?>
+    <?= $form->field($model, 'id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Svolgi', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
-    <div>
-        <?php
-            if($flag) {
-
-           }
-        ?>
-    </div>
 
 </div>

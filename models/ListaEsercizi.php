@@ -32,6 +32,7 @@ class ListaEsercizi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id'], 'integer'],
             [['id_logopedista'], 'integer'],
             [['lista_id', 'nome'], 'required'],
             [['nome', 'lista_id'], 'string', 'max' => 510],
@@ -94,7 +95,4 @@ class ListaEsercizi extends \yii\db\ActiveRecord
         return $this->nome;
     }
 
-    public function prova() {
-        return $this->id_logopedista;
-    }
 }

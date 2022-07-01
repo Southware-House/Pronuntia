@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Esercizio;
 use app\models\ListaEsercizi;
 use app\models\SceltaLista;
 use Yii;
@@ -44,7 +45,6 @@ class BambinoController extends Controller
     public function actionVisualizzaListeDaSvolgere() {
 
         $model = new ListaEsercizi();
-        $flag = false;
 
         $id = explode("-", Yii::$app->user->identity->getId());
         $connection = new Connection([
@@ -57,21 +57,19 @@ class BambinoController extends Controller
         $numeroListe = count($command);
 
         if($model->load(Yii::$app->request->post())) {
-            $flag = true;
-            $command2 = $connection->createCommand("select id_esercizio from associazione_esercizio where id_lista_esercizi like '$model->prova()'")->queryColumn();
-
-
+            return $this->redirect(['/bambino/visualizza-esercizi-lista', "id"=>$model->getId()]);
+            //return $this->redirect(array('visualizza-esercizi-lista', 'model' => $model));
         }
 
-        return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command, 'numeroListe'=>$numeroListe, 'model'=>$model, 'flag'=>$flag));
+        return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command, 'numeroListe'=>$numeroListe, 'model'=>$model));
 
     }
 
-    public function actionVisualizzaEserciziLista() {
+    public function actionVisualizzaEserciziLista($id) {
+        $model = new ListaEsercizi();
 
+        $model = ListaEsercizi::findOne($id);
 
-
-        return $this->render('visualizza-esercizi-lista');
-
+        return $this->render('visualizza-esercizi-lista', array('listaEsercizi' => $model));
     }
 }
