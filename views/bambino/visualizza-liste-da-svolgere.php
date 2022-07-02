@@ -17,7 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <caption>Liste da svolgere</caption>
         <thead>
         <tr>
+            <th scope="col">ID</th>
             <th scope="col">Nome</th>
+        </tr>
         </tr>
         </thead>
         <tbody>
@@ -25,7 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
         for ($i = 0; $i < $numeroListe; $i++) {
             echo "<tr>";
             echo "<td>";
-            echo $liste[$i];
+            echo $liste[$i]['id'];
+            echo "</td>";
+            echo "<td>";
+            echo $liste[$i]['nome'];
             echo "</td>";
             echo "</tr>";
         }

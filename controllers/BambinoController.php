@@ -55,21 +55,33 @@ class BambinoController extends Controller
         $connection->open();
         $command = $connection->createCommand("select lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryColumn();
         $numeroListe = count($command);
+        $command2 = $connection->createCommand("select lista_esercizi.id, lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryAll();
 
         if($model->load(Yii::$app->request->post())) {
             return $this->redirect(['/bambino/visualizza-esercizi-lista', "id"=>$model->getId()]);
             //return $this->redirect(array('visualizza-esercizi-lista', 'model' => $model));
         }
 
-        return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command, 'numeroListe'=>$numeroListe, 'model'=>$model));
+        return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command2, 'numeroListe'=>$numeroListe, 'model'=>$model));
 
     }
 
     public function actionVisualizzaEserciziLista($id) {
         $model = new ListaEsercizi();
 
-        $model = ListaEsercizi::findOne($id);
+        //$model = ListaEsercizi::findOne($id);
+        $connection = new Connection([
+            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+            'username' => 'root',
+            'password' => 'root',
+        ]);
 
-        return $this->render('visualizza-esercizi-lista', array('listaEsercizi' => $model));
+        $connection->open();
+        $command = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia from esercizio, associazione_esercizio where esercizio.id like associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi like '$id'")->queryColumn();
+        $numeroEsercizi = count($command);
+        $command2 = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia from esercizio, associazione_esercizio where esercizio.id like associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi like '$id'")->queryAll();
+
+
+        return $this->render('visualizza-esercizi-lista', array('listaEsercizi' => $model, 'esercizi'=>$command2,'numeroEsercizi'=>$numeroEsercizi));
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use yii\db\Connection;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
@@ -17,13 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <caption></caption>
         <thead>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nome</th>
+            <th scope="col">ID</th>
+            <th scope="col">Titolo</th>
+            <th scope="col">Traccia</th>
         </tr>
         </thead>
         <tbody>
         <?php
-        $var = array();
+        /*$var = array();
         $query = $listaEsercizi::find()->select('esercizio.id, esercizio.titolo, esercizio.traccia')->join('associazione_esercizio', 'lista_esercizi.id = associazione_esercizio.id_lista_esercizi')->join('esercizio', 'associazione_esercizio.id_esercizio = esercizio.id')->all();
         foreach($query as $var){
             echo
@@ -38,6 +40,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     $var['traccia'];
                 '</td>'.
             '</tr>';
+        }*/
+        ?>
+        <?php
+        for ($i = 0; $i < $numeroEsercizi; $i++) {
+            echo "<tr>";
+            echo "<td>";
+            echo $esercizi[$i]['id'];
+            echo "</td>";
+            echo "<td>";
+            echo $esercizi[$i]['titolo'];
+            echo "</td>";
+            echo "<td>";
+            echo $esercizi[$i]['traccia'];
+            echo "</td>";
+            echo "</tr>";
         }
         ?>
 
