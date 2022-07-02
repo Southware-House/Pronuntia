@@ -23,7 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
     <?=$traccia?>
+
     <br>
-    <?php echo Html::img('@web/images/29d2abad6eac900308d7e3182c37e8ff.png') ?>
+    <?php echo Html::img() ?>
 
 </div>

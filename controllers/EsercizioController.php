@@ -23,19 +23,23 @@ class EsercizioController extends Controller
             $audio = UploadedFile::getInstances($model, 'audioFiles');
             $imagesPaths = '';
             $audioPaths = '';
-            if(!file_exists(getcwd() . '/images/esercizi/'.Yii::$app->user->identity->getEmail())){
-                mkdir(getcwd() . '/images/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
+            //$path = '/web/images/esercizi/';
+            //$path2 = '/web/audio/esercizi/';
+            if(!file_exists(ROOTPATH . '/images/esercizi/'.Yii::$app->user->identity->getEmail())){
+                mkdir( ROOTPATH . '/images/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
             }
-            if(!file_exists(getcwd() . '/audio/esercizi/'.Yii::$app->user->identity->getEmail())){
-                mkdir(getcwd() . '/audio/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
+            if(!file_exists(ROOTPATH . '/audio/esercizi/'.Yii::$app->user->identity->getEmail())){
+                mkdir( ROOTPATH . '/audio/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
+
             }
+
             foreach ($image as $image) {
-                $path = getcwd() . '/images/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $image->baseName, false) . '.' . $image->extension;
+                $path = ROOTPATH . '/images/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $image->baseName, false) . '.' . $image->extension;
                 $imagesPaths = $imagesPaths . '??' . $path;
                 $image->saveAs($path);
             }
             foreach ($audio as $audio) {
-                $path = getcwd() . '/audio/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $audio->baseName, false) . '.' . $audio->extension;
+                $path = ROOTPATH . '/audio/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $audio->baseName, false) . '.' . $audio->extension;
                 $audioPaths = $audioPaths . '??' . $path;
                 $audio->saveAs($path);
             }
