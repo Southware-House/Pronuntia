@@ -1,11 +1,10 @@
 <?php
 
-use yii\db\Connection;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $listaEsercizi app\models\ListaEsercizi */
+/* @var $model app\models\Esercizio */
 /* @var $form ActiveForm */
 $this->title = 'Visualizza esercizi lista';
 $this->params['breadcrumbs'][] = $this->title;
