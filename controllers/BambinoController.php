@@ -67,7 +67,7 @@ class BambinoController extends Controller
     }
 
     public function actionVisualizzaEserciziLista($id) {
-        $model = new ListaEsercizi();
+        $model = new Esercizio();
 
         //$model = ListaEsercizi::findOne($id);
         $connection = new Connection([
@@ -82,6 +82,6 @@ class BambinoController extends Controller
         $command2 = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia from esercizio, associazione_esercizio where esercizio.id like associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi like '$id'")->queryAll();
 
 
-        return $this->render('visualizza-esercizi-lista', array('listaEsercizi' => $model, 'esercizi'=>$command2,'numeroEsercizi'=>$numeroEsercizi));
+        return $this->render('visualizza-esercizi-lista', array('model' => $model, 'esercizi'=>$command2,'numeroEsercizi'=>$numeroEsercizi));
     }
 }

@@ -25,24 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </thead>
         <tbody>
         <?php
-        /*$var = array();
-        $query = $listaEsercizi::find()->select('esercizio.id, esercizio.titolo, esercizio.traccia')->join('associazione_esercizio', 'lista_esercizi.id = associazione_esercizio.id_lista_esercizi')->join('esercizio', 'associazione_esercizio.id_esercizio = esercizio.id')->all();
-        foreach($query as $var){
-            echo
-            '<tr>'.
-                '<td>'.
-                    $var['id'];
-                '</td>'.
-                '<td>'.
-                    $var['titolo'];
-                '</td>'.
-                '<td>'.
-                    $var['traccia'];
-                '</td>'.
-            '</tr>';
-        }*/
-        ?>
-        <?php
         for ($i = 0; $i < $numeroEsercizi; $i++) {
             echo "<tr>";
             echo "<td>";
@@ -60,5 +42,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </tbody>
     </table>
+
+    <?php $form = ActiveForm::begin([
+        'layout' => 'horizontal',
+        'options' => ['enctype' => 'multipart/form-data'],
+        'fieldConfig' => [
+            'template' => "{label}\n{input}\n{error}",
+            'labelOptions' => ['class' => 'col-lg-1 col-form-label mr-lg-3'],
+            'inputOptions' => ['class' => 'col-lg-3 form-control'],
+            'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
+        ],
+    ]); ?>
+
+    Seleziona l'<u>ID</u> dell'esercizio da svolgere
+    <br>
+    <br>
+
+    <?= $form->field($model, 'id')->textInput() ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Svolgi', ['class' => 'btn btn-primary']) ?>
+    </div>
+    <?php ActiveForm::end(); ?>
 
 </div>
