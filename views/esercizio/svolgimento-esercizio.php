@@ -24,7 +24,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?=$traccia?>
 
-    <br>
-    <?php echo Html::img() ?>
+    <div>
+        <br>
+
+        <?php
+            for($i = 0; $i < $numeroImmagini; $i++) {
+                echo Html::img("@web/images/esercizi/logopedista@g.c/" . $nomeImmagini[$i], array('width'=>250, 'height'=>'auto', 'style'=>"border:1px solid black"));
+                echo " ";
+            }
+
+        ?>
+    </div>
+
+    <div>
+
+        //inserire audio
+
+    </div>
 
 </div>

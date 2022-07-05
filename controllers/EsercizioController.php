@@ -23,8 +23,6 @@ class EsercizioController extends Controller
             $audio = UploadedFile::getInstances($model, 'audioFiles');
             $imagesPaths = '';
             $audioPaths = '';
-            //$path = '/web/images/esercizi/';
-            //$path2 = '/web/audio/esercizi/';
             if(!file_exists(ROOTPATH . '/images/esercizi/'.Yii::$app->user->identity->getEmail())){
                 mkdir( ROOTPATH . '/images/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
             }
@@ -174,6 +172,8 @@ class EsercizioController extends Controller
 
     public function actionSvolgimentoEsercizio($id) {
 
+        $nomeImmagini = array();
+
         $connection = new Connection([
             'dsn' => 'mysql:host=localhost;dbname=yii2basic',
             'username' => 'root',
@@ -182,9 +182,18 @@ class EsercizioController extends Controller
 
         $connection->open();
         $command = $connection->createCommand("select * from esercizio where esercizio.id like '$id'")->queryOne();
+        $unioneDiPath = $command['immagini'];
+        $divisioneDiPath = explode("??", $unioneDiPath);
+        $numeroImmagini = count($divisioneDiPath);
 
+        for ($i = 1; $i < $numeroImmagini; $i++) {
+            $splitSingolo = explode("/", $divisioneDiPath[$i]);
+            $numDir = count($splitSingolo);
+            $indice = $numDir - 1;
+            array_push($nomeImmagini, $splitSingolo[$indice]);
+        }
 
-        return $this->render('svolgimento-esercizio', array('esercizio' => $command));
+        return $this->render('svolgimento-esercizio', array('esercizio' => $command, 'numeroImmagini' => $numeroImmagini - 1, 'nomeImmagini' => $nomeImmagini));
     }
 
 }
