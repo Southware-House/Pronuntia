@@ -36,7 +36,7 @@ class Esercizio extends \yii\db\ActiveRecord
             [['id'], 'integer'],
             [['id_logopedista'], 'integer'],
             [['traccia', 'files_audio', 'immagini'], 'string', 'max' => 510],
-            [['titolo'], 'string', 'max' => 30],
+            [['titolo'], 'string', 'max' => 128],
             [['audioFiles'], 'file', 'extensions' => 'mp3,wav,ogg', 'maxFiles' => 4],
             [['imageFiles'], 'file', 'extensions' => 'png,jpg', 'maxFiles' => 4],
             [['id_logopedista'], 'exist', 'skipOnError' => true, 'targetClass' => Logopedista::className(), 'targetAttribute' => ['id_logopedista' => 'id']]

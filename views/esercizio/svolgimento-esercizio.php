@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Url;
-use hosanna\audiojs\AudioJs;
 
 /* @var $this yii\web\View */
+// rivedere riga 8, se non serve -> cancellare
 /* @var $model app\models\Esercizio */
 /* @var $form ActiveForm */
 $this->title = 'Svolgimento esercizio';
@@ -28,19 +28,37 @@ $this->params['breadcrumbs'][] = $this->title;
         <br>
 
         <?php
-            for($i = 0; $i < $numeroImmagini; $i++) {
-                echo Html::img("@web/images/esercizi/logopedista@g.c/" . $nomeImmagini[$i], array('width'=>250, 'height'=>'auto', 'style'=>"border:1px solid black"));
-                echo " ";
+            if($numeroImmagini > 0) {
+                echo '<b>Immagini</b>';
+                echo '<br>';
+                echo '<br>';
+                for($i = 0; $i < $numeroImmagini; $i++) {
+                    echo Html::img("@web/images/esercizi/" . $emailLogopedisti[$i] . "/" . $nomeImmagini[$i], array('width'=>250, 'height'=>'auto', 'style'=>"border:1px solid black"));
+                    echo " ";
+                }
             }
         ?>
     </div>
 
-        <!--inserire audio-->
+    <br>
+
+    <div>
         <?php
-        $audiojs = new AudioJs();
-        $audiojs->uploads = 'audio/esercizi/francescorossi@gmail.com/b84954cb41831fa842dd69f6e1836b6e.mp3';
+            if($numeroAudio > 0) {
+                echo '<b>File audio</b>';
+                echo '<br>';
+                echo '<br>';
+                for($i = 0; $i < $numeroAudio; $i++) {
+                    echo '<audio controls>';
+                    echo '<source src="audio/esercizi/logopedista@g.c/21371e6a5383f41e841a466a4e21c1c3.mp3" type="audio/mpeg">';
+                    echo 'Your browser does not support the audio element.';
+                    echo '</audio>';
+                }
+            }
         ?>
 
-        <?= $audiojs->run() ?>
+        <!-- inserire pulsante che conferma svolgimento esercizio e rimanda alla vista esercizi lista -->
+
+    </div>
 
 </div>
