@@ -4,32 +4,41 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ListaEsercizi */
+/* @var $model app\models\Esercizio */
 /* @var $form ActiveForm */
-$this->title = 'Visualizza liste da svolgere';
+$this->title = 'Visualizza esercizi lista';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="visualizza-liste-da-svolgere">
+<div class="visualizza-esercizi-lista">
 
     <table class="table table-bordered table-condensed table-striped table-hover">
-        <caption>Liste da svolgere</caption>
+        <caption></caption>
         <thead>
         <tr>
-            <th scope="col">Nome</th>
+            <th scope="col">ID</th>
+            <th scope="col">Titolo</th>
+            <th scope="col">Traccia</th>
         </tr>
         </thead>
         <tbody>
         <?php
-        for ($i = 0; $i < $numeroListe; $i++) {
+        for ($i = 0; $i < $numeroEsercizi; $i++) {
             echo "<tr>";
             echo "<td>";
-            echo $liste[$i];
+            echo $esercizi[$i]['id'];
+            echo "</td>";
+            echo "<td>";
+            echo $esercizi[$i]['titolo'];
+            echo "</td>";
+            echo "<td>";
+            echo $esercizi[$i]['traccia'];
             echo "</td>";
             echo "</tr>";
         }
         ?>
+
         </tbody>
     </table>
 
@@ -44,12 +53,15 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+    Seleziona l'<u>ID</u> dell'esercizio da svolgere
+    <br>
+    <br>
+
     <?= $form->field($model, 'id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Svolgi', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
-
 
 </div>

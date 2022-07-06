@@ -23,19 +23,21 @@ class EsercizioController extends Controller
             $audio = UploadedFile::getInstances($model, 'audioFiles');
             $imagesPaths = '';
             $audioPaths = '';
-            if(!file_exists(getcwd() . '/images/esercizi/'.Yii::$app->user->identity->getEmail())){
-                mkdir(getcwd() . '/images/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
+            if(!file_exists(ROOTPATH . '/images/esercizi/'.Yii::$app->user->identity->getEmail())){
+                mkdir( ROOTPATH . '/images/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
             }
-            if(!file_exists(getcwd() . '/audio/esercizi/'.Yii::$app->user->identity->getEmail())){
-                mkdir(getcwd() . '/audio/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
+            if(!file_exists(ROOTPATH . '/audio/esercizi/'.Yii::$app->user->identity->getEmail())){
+                mkdir( ROOTPATH . '/audio/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
+
             }
+
             foreach ($image as $image) {
-                $path = getcwd() . '/images/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $image->baseName, false) . '.' . $image->extension;
+                $path = ROOTPATH . '/images/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $image->baseName, false) . '.' . $image->extension;
                 $imagesPaths = $imagesPaths . '??' . $path;
                 $image->saveAs($path);
             }
             foreach ($audio as $audio) {
-                $path = getcwd() . '/audio/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $audio->baseName, false) . '.' . $audio->extension;
+                $path = ROOTPATH . '/audio/esercizi/' . Yii::$app->user->identity->getEmail() . '/' .hash('md5', $audio->baseName, false) . '.' . $audio->extension;
                 $audioPaths = $audioPaths . '??' . $path;
                 $audio->saveAs($path);
             }
@@ -122,6 +124,76 @@ class EsercizioController extends Controller
 
         return $this->render('assegnazione-lista-esercizi', array('model'=>$model, 'numeroListe'=>$numeroListe, 'liste'=>$query, 'numeroBambini'=>$numeroBambini, 'bambini'=>$query2));
 
+    }
+
+    public function actionVisualizzaListeDaSvolgere() {
+
+        $model = new ListaEsercizi();
+
+        $id = explode("-", Yii::$app->user->identity->getId());
+        $connection = new Connection([
+            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+            'username' => 'root',
+            'password' => 'root',
+        ]);
+        $connection->open();
+        $command = $connection->createCommand("select lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryColumn();
+        $numeroListe = count($command);
+        $command2 = $connection->createCommand("select lista_esercizi.id, lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryAll();
+
+        if($model->load(Yii::$app->request->post())) {
+            return $this->redirect(['/esercizio/visualizza-esercizi-lista', "id"=>$model->getId()]);
+        }
+
+        return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command2, 'numeroListe'=>$numeroListe, 'model'=>$model));
+
+    }
+
+    public function actionVisualizzaEserciziLista($id) {
+        $model = new Esercizio();
+
+        $connection = new Connection([
+            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+            'username' => 'root',
+            'password' => 'root',
+        ]);
+
+        $connection->open();
+        $command = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia from esercizio, associazione_esercizio where esercizio.id like associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi like '$id'")->queryColumn();
+        $numeroEsercizi = count($command);
+        $command2 = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia from esercizio, associazione_esercizio where esercizio.id like associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi like '$id'")->queryAll();
+
+        if($model->load(Yii::$app->request->post())) {
+            return $this->redirect(['/esercizio/svolgimento-esercizio', "id"=>$model->getId()]);
+        }
+
+        return $this->render('visualizza-esercizi-lista', array('model' => $model, 'esercizi'=>$command2,'numeroEsercizi'=>$numeroEsercizi));
+    }
+
+    public function actionSvolgimentoEsercizio($id) {
+
+        $nomeImmagini = array();
+
+        $connection = new Connection([
+            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+            'username' => 'root',
+            'password' => 'root',
+        ]);
+
+        $connection->open();
+        $command = $connection->createCommand("select * from esercizio where esercizio.id like '$id'")->queryOne();
+        $unioneDiPath = $command['immagini'];
+        $divisioneDiPath = explode("??", $unioneDiPath);
+        $numeroImmagini = count($divisioneDiPath);
+
+        for ($i = 1; $i < $numeroImmagini; $i++) {
+            $splitSingolo = explode("/", $divisioneDiPath[$i]);
+            $numDir = count($splitSingolo);
+            $indice = $numDir - 1;
+            array_push($nomeImmagini, $splitSingolo[$indice]);
+        }
+
+        return $this->render('svolgimento-esercizio', array('esercizio' => $command, 'numeroImmagini' => $numeroImmagini - 1, 'nomeImmagini' => $nomeImmagini));
     }
 
 }

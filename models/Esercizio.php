@@ -33,6 +33,7 @@ class Esercizio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id'], 'integer'],
             [['id_logopedista'], 'integer'],
             [['traccia', 'files_audio', 'immagini'], 'string', 'max' => 510],
             [['titolo'], 'string', 'max' => 30],
@@ -55,5 +56,15 @@ class Esercizio extends \yii\db\ActiveRecord
             'files_audio' => 'Files Audio',
             'imageFiles' => 'Immagini',
         ];
+    }
+
+    public function getId() {
+
+        return $this->id;
+    }
+
+    public function getTitolo() {
+
+        return $this->titolo;
     }
 }

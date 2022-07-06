@@ -20,7 +20,7 @@ $this->title = 'Home';
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA LISTE DA SVOLGERE</h5>
                     <p class="card-text">Visualizza le liste di esercizi che il bambino deve svolgere.</p>
-                    <?= Html::beginForm(['/bambino/visualizza-liste-da-svolgere'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::beginForm(['/esercizio/visualizza-liste-da-svolgere'], 'post', ['enctype' => 'multipart/form-data']) ?>
                     <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
                     <?= Html::endForm() ?>
                 </div>

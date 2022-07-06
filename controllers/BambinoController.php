@@ -43,34 +43,4 @@ class BambinoController extends Controller
 
     }
 
-    public function actionVisualizzaListeDaSvolgere() {
-
-        $model = new ListaEsercizi();
-
-        $id = explode("-", Yii::$app->user->identity->getId());
-        $connection = new Connection([
-            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-            'username' => 'root',
-            'password' => 'root',
-        ]);
-        $connection->open();
-        $command = $connection->createCommand("select lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryColumn();
-        $numeroListe = count($command);
-
-        if($model->load(Yii::$app->request->post())) {
-            return $this->redirect(['/bambino/visualizza-esercizi-lista', "id"=>$model->getId()]);
-            //return $this->redirect(array('visualizza-esercizi-lista', 'model' => $model));
-        }
-
-        return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command, 'numeroListe'=>$numeroListe, 'model'=>$model));
-
-    }
-
-    public function actionVisualizzaEserciziLista($id) {
-        $model = new ListaEsercizi();
-
-        $model = ListaEsercizi::findOne($id);
-
-        return $this->render('visualizza-esercizi-lista', array('listaEsercizi' => $model));
-    }
 }
