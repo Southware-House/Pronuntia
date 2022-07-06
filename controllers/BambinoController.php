@@ -13,6 +13,7 @@ use yii\web\Controller;
 class BambinoController extends Controller
 {
     public function actionRegisterBambino() {
+
         $model = new Bambino();
 
         if ($model->load(Yii::$app->request->post())) {
