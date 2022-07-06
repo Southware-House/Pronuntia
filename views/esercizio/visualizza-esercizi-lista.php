@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    Seleziona l'<u>ID</u> dell'esercizio da svolgere
+    Inserisci l'<u>ID</u> dell'esercizio da svolgere
     <br>
     <br>
 
