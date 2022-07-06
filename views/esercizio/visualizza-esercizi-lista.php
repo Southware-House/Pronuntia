@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th scope="col">ID</th>
             <th scope="col">Titolo</th>
             <th scope="col">Traccia</th>
+            <th scope="col">Svolto</th>
         </tr>
         </thead>
         <tbody>
@@ -34,6 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
             echo "</td>";
             echo "<td>";
             echo $esercizi[$i]['traccia'];
+            echo "</td>";
+            echo "<td>";
+            if($esercizi[$i]['is_svolto'] == 1)
+                echo 'Si';
+            else
+                echo 'No';
             echo "</td>";
             echo "</tr>";
         }

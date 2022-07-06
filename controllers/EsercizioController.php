@@ -14,6 +14,8 @@ use yii\helpers\ArrayHelper;
 
 class EsercizioController extends Controller
 {
+    public $session;
+
     public function actionCreaEsercizio() {
 
         $model = new Esercizio();
@@ -142,14 +144,17 @@ class EsercizioController extends Controller
         $command2 = $connection->createCommand("select lista_esercizi.id, lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryAll();
 
         if($model->load(Yii::$app->request->post())) {
-            return $this->redirect(['/esercizio/visualizza-esercizi-lista', "id"=>$model->getId()]);
+            $session = Yii::$app->session;
+            $session->open();
+            $session->set('id_lista', $model->getId());
+            return $this->redirect(['/esercizio/visualizza-esercizi-lista']);
         }
 
         return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command2, 'numeroListe'=>$numeroListe, 'model'=>$model));
 
     }
 
-    public function actionVisualizzaEserciziLista($id) {
+    public function actionVisualizzaEserciziLista() {
         $model = new Esercizio();
 
         $connection = new Connection([
@@ -157,11 +162,13 @@ class EsercizioController extends Controller
             'username' => 'root',
             'password' => 'root',
         ]);
+        $session = Yii::$app->session;
+        $id = $session->get('id_lista');
 
         $connection->open();
-        $command = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia from esercizio, associazione_esercizio where esercizio.id like associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi like '$id'")->queryColumn();
+        $command = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia, svolgimento_esercizio.is_svolto from esercizio, associazione_esercizio, svolgimento_esercizio where esercizio.id = associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi = '$id' and esercizio.id = svolgimento_esercizio.id_esercizio")->queryColumn();
         $numeroEsercizi = count($command);
-        $command2 = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia from esercizio, associazione_esercizio where esercizio.id like associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi like '$id'")->queryAll();
+        $command2 = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia, svolgimento_esercizio.is_svolto from esercizio, associazione_esercizio, svolgimento_esercizio where esercizio.id = associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi = '$id' and esercizio.id = svolgimento_esercizio.id_esercizio")->queryAll();
 
         if($model->load(Yii::$app->request->post())) {
             return $this->redirect(['/esercizio/svolgimento-esercizio', "id"=>$model->getId()]);
@@ -170,7 +177,7 @@ class EsercizioController extends Controller
         return $this->render('visualizza-esercizi-lista', array('model' => $model, 'esercizi'=>$command2,'numeroEsercizi'=>$numeroEsercizi));
     }
 
-    public function actionSvolgimentoEsercizio($id) {
+    public function actionSvolgimentoEsercizio($id=null, $setSvolto = null) {
 
         $nomeImmagini = array();
         $emailLogopedisti = array();
@@ -184,7 +191,15 @@ class EsercizioController extends Controller
         ]);
 
         $connection->open();
-        $command = $connection->createCommand("select * from esercizio where esercizio.id like '$id'")->queryOne();
+
+        if($setSvolto)
+        {
+            $command = $connection->createCommand("update svolgimento_esercizio set svolgimento_esercizio.is_svolto = true where svolgimento_esercizio.id_esercizio = '$id'");
+            $command->execute();
+            $this->redirect(['esercizio/visualizza-esercizi-lista']);
+        }
+
+        $command = $connection->createCommand("select * from esercizio where esercizio.id = '$id'")->queryOne();
 
         $unioneDiPathImg = $command['immagini'];
         $divisioneDiPathImg = explode("??", $unioneDiPathImg);

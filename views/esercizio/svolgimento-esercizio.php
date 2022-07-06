@@ -5,7 +5,6 @@ use yii\bootstrap4\ActiveForm;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-// rivedere riga 8, se non serve -> cancellare
 /* @var $model app\models\Esercizio */
 /* @var $form ActiveForm */
 $this->title = 'Svolgimento esercizio';
@@ -56,9 +55,27 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             }
         ?>
-
-        <!-- inserire pulsante che conferma svolgimento esercizio e rimanda alla vista esercizi lista -->
-
     </div>
+
+    <?php $form = ActiveForm::begin([
+        'layout' => 'horizontal',
+        'options' => ['enctype' => 'multipart/form-data'],
+        'action' => ['esercizio/svolgimento-esercizio', 'id' => $esercizio['id'], 'setSvolto' => true],
+        'fieldConfig' => [
+            'template' => "{label}\n{input}\n{error}",
+            'labelOptions' => ['class' => 'col-lg-2 col-form-label mr-lg-3'],
+            'inputOptions' => ['class' => 'col-lg-3 form-control'],
+            'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
+        ],
+    ]); ?>
+
+    <br>
+    <br>
+    <!-- inserire pulsante che conferma svolgimento esercizio e rimanda alla vista esercizi lista -->
+    <div class="form-group">
+        <?= Html::submitButton('Conferma', ['class' => 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
 
 </div>
