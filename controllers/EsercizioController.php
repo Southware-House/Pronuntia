@@ -173,6 +173,9 @@ class EsercizioController extends Controller
     public function actionSvolgimentoEsercizio($id) {
 
         $nomeImmagini = array();
+        $emailLogopedisti = array();
+        $nomeAudio = array();
+        $emailLogopedistiAudio = array();
 
         $connection = new Connection([
             'dsn' => 'mysql:host=localhost;dbname=yii2basic',
@@ -182,18 +185,32 @@ class EsercizioController extends Controller
 
         $connection->open();
         $command = $connection->createCommand("select * from esercizio where esercizio.id like '$id'")->queryOne();
-        $unioneDiPath = $command['immagini'];
-        $divisioneDiPath = explode("??", $unioneDiPath);
-        $numeroImmagini = count($divisioneDiPath);
 
+        $unioneDiPathImg = $command['immagini'];
+        $divisioneDiPathImg = explode("??", $unioneDiPathImg);
+        $numeroImmagini = count($divisioneDiPathImg);
         for ($i = 1; $i < $numeroImmagini; $i++) {
-            $splitSingolo = explode("/", $divisioneDiPath[$i]);
+            $splitSingolo = explode("/", $divisioneDiPathImg[$i]);
             $numDir = count($splitSingolo);
             $indice = $numDir - 1;
+            $indice2 = $numDir - 2;
             array_push($nomeImmagini, $splitSingolo[$indice]);
+            array_push($emailLogopedisti, $splitSingolo[$indice2]);
         }
 
-        return $this->render('svolgimento-esercizio', array('esercizio' => $command, 'numeroImmagini' => $numeroImmagini - 1, 'nomeImmagini' => $nomeImmagini));
+        $unioneDiPathAudio = $command['files_audio'];
+        $divisioneDiPathAudio = explode("??", $unioneDiPathAudio);
+        $numeroAudio = count($divisioneDiPathAudio);
+        for ($i = 1; $i < $numeroAudio; $i++) {
+            $splitSingolo = explode("/", $divisioneDiPathAudio[$i]);
+            $numDir = count($splitSingolo);
+            $indice = $numDir - 1;
+            $indice2 = $numDir - 2;
+            array_push($nomeAudio, $splitSingolo[$indice]);
+            array_push($emailLogopedistiAudio, $splitSingolo[$indice2]);
+        }
+
+        return $this->render('svolgimento-esercizio', array('esercizio' => $command, 'numeroImmagini' => $numeroImmagini - 1, 'nomeImmagini' => $nomeImmagini, 'emailLogopedisti' => $emailLogopedisti, 'numeroAudio' => $numeroAudio - 1, 'nomeAudio' => $nomeAudio, 'emailLogopedistiAudio' => $emailLogopedistiAudio));
     }
 
 }

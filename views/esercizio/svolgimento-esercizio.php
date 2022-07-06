@@ -28,17 +28,36 @@ $this->params['breadcrumbs'][] = $this->title;
         <br>
 
         <?php
-            for($i = 0; $i < $numeroImmagini; $i++) {
-                echo Html::img("@web/images/esercizi/logopedista@g.c/" . $nomeImmagini[$i], array('width'=>250, 'height'=>'auto', 'style'=>"border:1px solid black"));
-                echo " ";
+            if($numeroImmagini > 0) {
+                echo '<b>Immagini</b>';
+                echo '<br>';
+                echo '<br>';
+                for($i = 0; $i < $numeroImmagini; $i++) {
+                    echo Html::img("@web/images/esercizi/" . $emailLogopedisti[$i] . "/" . $nomeImmagini[$i], array('width'=>250, 'height'=>'auto', 'style'=>"border:1px solid black"));
+                    echo " ";
+                }
             }
-
         ?>
     </div>
 
-    <div>
+    <br>
 
-        //inserire audio
+    <div>
+        <?php
+            if($numeroAudio > 0) {
+                echo '<b>File audio</b>';
+                echo '<br>';
+                echo '<br>';
+                for($i = 0; $i < $numeroAudio; $i++) {
+                    echo '<audio controls>';
+                    echo '<source src="audio/esercizi/logopedista@g.c/21371e6a5383f41e841a466a4e21c1c3.mp3" type="audio/mpeg">';
+                    echo 'Your browser does not support the audio element.';
+                    echo '</audio>';
+                }
+            }
+        ?>
+
+        <!-- inserire pulsante che conferma svolgimento esercizio e rimanda alla vista esercizi lista -->
 
     </div>
 
