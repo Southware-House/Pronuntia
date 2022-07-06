@@ -49,6 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+    Inserisci l'<u>ID</u> della lista da svolgere
+    <br>
+    <br>
+
     <?= $form->field($model, 'id')->textInput() ?>
 
     <div class="form-group">

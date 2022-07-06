@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 echo '<br>';
                 for($i = 0; $i < $numeroAudio; $i++) {
                     echo '<audio controls>';
-                    echo '<source src="audio/esercizi/logopedista@g.c/21371e6a5383f41e841a466a4e21c1c3.mp3" type="audio/mpeg">';
+                    echo '<source src="audio/esercizi/' . $emailLogopedistiAudio[$i] . '/' . $nomeAudio[$i] . '" type="audio/mpeg">';
                     echo 'Your browser does not support the audio element.';
                     echo '</audio>';
                 }
