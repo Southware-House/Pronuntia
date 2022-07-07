@@ -164,11 +164,12 @@ class EsercizioController extends Controller
         ]);
         $session = Yii::$app->session;
         $id = $session->get('id_lista');
+        $id2 = explode("-", Yii::$app->user->identity->getId());
 
         $connection->open();
-        $command = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia, svolgimento_esercizio.is_svolto from esercizio, associazione_esercizio, svolgimento_esercizio where esercizio.id = associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi = '$id' and esercizio.id = svolgimento_esercizio.id_esercizio")->queryColumn();
+        $command = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia, svolgimento_esercizio.is_svolto from esercizio, associazione_esercizio, svolgimento_esercizio where esercizio.id = associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi = '$id' and esercizio.id = svolgimento_esercizio.id_esercizio and svolgimento_esercizio.id_bambino = '$id2[1]'")->queryColumn();
         $numeroEsercizi = count($command);
-        $command2 = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia, svolgimento_esercizio.is_svolto from esercizio, associazione_esercizio, svolgimento_esercizio where esercizio.id = associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi = '$id' and esercizio.id = svolgimento_esercizio.id_esercizio")->queryAll();
+        $command2 = $connection->createCommand("select esercizio.id, esercizio.titolo, esercizio.traccia, svolgimento_esercizio.is_svolto from esercizio, associazione_esercizio, svolgimento_esercizio where esercizio.id = associazione_esercizio.id_esercizio and associazione_esercizio.id_lista_esercizi = '$id' and esercizio.id = svolgimento_esercizio.id_esercizio and svolgimento_esercizio.id_bambino = '$id2[1]'")->queryAll();
 
         if($model->load(Yii::$app->request->post())) {
             return $this->redirect(['/esercizio/svolgimento-esercizio', "id"=>$model->getId()]);

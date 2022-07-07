@@ -5,6 +5,7 @@
 
 use app\controllers\SiteController;
 use yii\helpers\Html;
+use yii\bootstrap4\ActiveForm;
 
 $this->title = 'Home';
 ?>
@@ -26,14 +27,32 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
+
         <div class="col-sm-6">
             <div class="card text-center">
                 <div class="card-body">
-                    <h5 class="card-title">prova</h5>
-                    <p class="card-text">prova</p>
-                    <?= Html::beginForm([''], 'post', ['enctype' => 'multipart/form-data']) ?>
-                    <?= Html::submitButton('prova', ['class' => 'submit']) ?>
-                    <?= Html::endForm() ?>
+                    <?php $form = ActiveForm::begin([
+                        'layout' => 'horizontal',
+                        'options' => ['enctype' => 'multipart/form-data'],
+                        'fieldConfig' => [
+                            'template' => "{label}\n{input}\n{error}",
+                            'labelOptions' => ['class' => 'col-lg-4 col-form-label mr-lg-3'],
+                            'inputOptions' => ['class' => 'col-lg-6 form-control'],
+                            'errorOptions' => ['class' => 'col-lg-12 invalid-feedback'],
+                        ],
+                    ]); ?>
+                    <h5 class="card-title">ACCESSO SEZIONE CAREGIVER</h5>
+                    <p class="card-text">Inserisci la password per accedere alla sezione Caregiver</p>
+                    <?= $form->field($model, 'passwd_caregiver')->textInput() ?>
+                    <?php
+                        if(isset($errore)) {
+                            echo "<h5><b style = 'color:red' > Password errata </b></h5>";
+                        }
+                    ?>
+                    <div class="form-group">
+                        <?= Html::submitButton('ACCEDI', ['class' => 'submit']) ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
             </div>
         </div>
