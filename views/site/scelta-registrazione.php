@@ -11,9 +11,6 @@ $this->title = 'Registrazione';
 
     <div class="jumbotron text-center bg-white">
 
-        <?php
-        echo "<input type=\"button\" onclick=\"location.href='/site/about.php'\" value=\"vai\"/>";
-        ?>
         <h1 class="display-4">Sei un logopedista o un bambino?</h1>
 
         </br>

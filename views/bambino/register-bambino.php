@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bambino-register-bambino">
 
-    <div class="jumbotron bg-transparent">
+    <div class="jumbotron bg-white">
 
     <h1><?php echo Html::encode($this->title) ?></h1>
 

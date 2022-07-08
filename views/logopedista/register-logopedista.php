@@ -11,6 +11,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="logopedista-register-logopedista">
+
+    <div class="jumbotron bg-white">
+
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
@@ -40,5 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         </div>
     <?php ActiveForm::end(); ?>
+    </div>
 
 </div>
