@@ -64,7 +64,7 @@ $this->title = 'Home';
         <div class="col-sm-6">
             <div class="card text-center">
                 <div class="card-body">
-                    <h5 class="card-title">VALUTA ESERCIZI</h5>
+                    <h5 class="card-title">VALUTA LISTE DI ESERCIZI</h5>
                     <p class="card-text">Visualizza le liste di esercizi che il bambino deve valutare.</p>
                     <?= Html::beginForm(['/esercizio/visualizza-liste-da-valutare'], 'post', ['enctype' => 'multipart/form-data']) ?>
                     <?= Html::submitButton('VALUTA', ['class' => 'submit']) ?>
