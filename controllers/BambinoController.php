@@ -131,13 +131,14 @@ class BambinoController extends Controller
 
         $connection->open();
         $command = $connection->createCommand("select associazione.email_logo from associazione where associazione.id_bambino = '$id[1]'")->queryColumn();
+        $command2 = $connection->createCommand("select logopedista.telefono from logopedista where logopedista.email like '$command[0]'")->queryColumn();
 
         if ($model->load(Yii::$app->request->post())) {
             $id = $model->getId();
             return $this->render('email-logopedista', array("email" => $command[0], "model" => $model, "variabile" => true, "id" => $id));
         }
 
-        return $this->render('email-logopedista', array("email" => $command[0], "model" => $model));
+        return $this->render('email-logopedista', array("email" => $command[0], "model" => $model, 'telefono' => $command2[0]));
 
     }
 
