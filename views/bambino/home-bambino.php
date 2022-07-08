@@ -11,7 +11,7 @@ $this->title = 'Home';
 ?>
 <div class="bambino-home-bambino">
 
-    <div class="jumbotron text-center bg-transparent">
+    <div class="jumbotron text-center bg-white">
         <h1 class="display-4">HOME BAMBINO</h1>
     </div>
 
