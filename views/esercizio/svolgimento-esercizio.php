@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="svolgimento-esercizio">
 
+    <div class="jumbotron bg-white">
+
     <?php
     $titolo = $esercizio['titolo'];
     $traccia = $esercizio['traccia'];
@@ -77,5 +79,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <?php ActiveForm::end(); ?>
+    </div>
 
 </div>

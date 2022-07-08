@@ -11,6 +11,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="esercizio-crea-esercizio">
+
+    <div class="jumbotron bg-white">
+
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
@@ -35,5 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::submitButton('Crea esercizio', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
+    </div>
 
 </div>

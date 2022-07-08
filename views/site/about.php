@@ -8,6 +8,8 @@ $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
+
+    <div class="jumbotron bg-white">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -16,4 +18,5 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <code><?= __FILE__ ?></code>
+    </div>
 </div>

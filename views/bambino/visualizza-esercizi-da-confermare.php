@@ -10,6 +10,8 @@ $this->title = 'Home';
 ?>
 <div class="bambino-visualizza-esercizi-da-confermare">
 
+    <div class="jumbotron bg-white">
+
     <br>
     <b><h4>Tabella degli esercizi</h4></b>
     <br>
@@ -89,5 +91,6 @@ $this->title = 'Home';
         <?= Html::submitButton('Conferma', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
+    </div>
 
 </div>
