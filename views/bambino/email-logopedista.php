@@ -11,7 +11,7 @@ $this->title = 'Email logopedista';
 <div class="email-logopedista">
 
     <br>
-    <h5>Contattare il logopedista inviando un'e-mail al seguente indirizzo di posta elettronica:</h5>
+    <h5>Per contattare il logopedista inviare un'e-mail al seguente indirizzo di posta elettronica:</h5>
     <br>
     <?= '<b><h5>' . $email . '</h5></b>' ?>
 

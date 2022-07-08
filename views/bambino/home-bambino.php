@@ -43,7 +43,7 @@ $this->title = 'Home';
                     ]); ?>
                     <h5 class="card-title">ACCESSO SEZIONE CAREGIVER</h5>
                     <p class="card-text">Inserisci la password per accedere alla sezione Caregiver</p>
-                    <?= $form->field($model, 'passwd_caregiver')->textInput() ?>
+                    <?= $form->field($model, 'passwd_caregiver')->passwordInput() ?>
                     <?php
                         if(isset($errore)) {
                             echo "<h5><b style = 'color:red' > Password errata </b></h5>";
