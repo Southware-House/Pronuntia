@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h4>Valuta la lista con una valutazione da 1 a 5.</h4>
 
-    <?= '<h5>' . "Nome Lista: " . $nome . '</h5>' ?>
+    <?= '<h5>' . "Nome Lista: <u>" . $nome . '</u></h5>' ?>
 
     <?php
 
