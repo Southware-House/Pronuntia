@@ -13,6 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="visualizza-liste-da-valutare">
 
+    <div class="jumbotron bg-white">
+
     <table class="table table-bordered table-condensed table-striped table-hover">
         <caption>Liste da valutare</caption>
         <thead>
@@ -59,6 +61,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::submitButton('Valuta', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
-
+    </div>
 
 </div>

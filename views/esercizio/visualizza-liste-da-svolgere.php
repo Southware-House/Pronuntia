@@ -13,6 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="visualizza-liste-da-svolgere">
 
+    <div class="jumbotron bg-white">
+
     <table class="table table-bordered table-condensed table-striped table-hover">
         <caption>Liste da svolgere</caption>
         <thead>
@@ -59,6 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::submitButton('Svolgi', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
+    </div>
 
 
 </div>

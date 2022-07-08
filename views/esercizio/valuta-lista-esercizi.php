@@ -13,6 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="esercizio-valuta-lista-esercizi">
 
+    <div class="jumbotron bg-white">
+
     <h4>Valuta la lista con una valutazione da 1 a 5.</h4>
 
     <?= '<h5>' . "Nome Lista: " . $nome . '</h5>' ?>
@@ -30,4 +32,5 @@ $this->params['breadcrumbs'][] = $this->title;
         $form->end();
 
     ?>
+    </div>
 </div>
