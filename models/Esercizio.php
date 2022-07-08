@@ -67,4 +67,5 @@ class Esercizio extends \yii\db\ActiveRecord
 
         return $this->titolo;
     }
+
 }

@@ -10,7 +10,7 @@ $this->title = 'Registrazione';
 <div class="site-scelta-registrazione">
 
     <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Sei un logopedista o un paziente?</h1>
+        <h1 class="display-4">Sei un logopedista o un bambino?</h1>
 
         </br>
 
@@ -19,7 +19,7 @@ $this->title = 'Registrazione';
         echo Nav::widget([
             'items' => [
                 ['label' => 'Registrazione Logopedista', 'url' => ['/logopedista/register-logopedista']],
-                ['label' => 'Registrazione Paziente', 'url' => ['/bambino/register-bambino']],
+                ['label' => 'Registrazione Bambino', 'url' => ['/bambino/register-bambino']],
             ],
             'options' => ['class' => 'navbar-nav'],
         ]);

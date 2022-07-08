@@ -1,0 +1,21 @@
+<?php
+
+/** @var yii\web\View $this */
+
+use app\controllers\SiteController;
+use yii\helpers\Html;
+use yii\bootstrap4\ActiveForm;
+
+$this->title = 'Conferma valutazione lista';
+?>
+<div class="esercizio-valutazione-lista-effettuata">
+
+    <br>
+    <h5>Valutazione lista esercizi effettuata con successo.</h5>
+    <br>
+
+    <?= Html::beginForm(['/bambino/home-bambino'], 'post', ['enctype' => 'multipart/form-data']) ?>
+    <?= Html::submitButton('TORNA ALLA HOME', ['class' => 'submit']) ?>
+    <?= Html::endForm() ?>
+
+</div>

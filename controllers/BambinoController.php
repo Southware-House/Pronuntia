@@ -119,6 +119,8 @@ class BambinoController extends Controller
 
     public function actionEmailLogopedista() {
 
+        $model = new ListaEsercizi();
+
         $connection = new Connection([
             'dsn' => 'mysql:host=localhost;dbname=yii2basic',
             'username' => 'root',
@@ -130,7 +132,12 @@ class BambinoController extends Controller
         $connection->open();
         $command = $connection->createCommand("select associazione.email_logo from associazione where associazione.id_bambino = '$id[1]'")->queryColumn();
 
-        return $this->render('email-logopedista', array("email" => $command[0]));
+        if ($model->load(Yii::$app->request->post())) {
+            $id = $model->getId();
+            return $this->render('email-logopedista', array("email" => $command[0], "model" => $model, "variabile" => true, "id" => $id));
+        }
+
+        return $this->render('email-logopedista', array("email" => $command[0], "model" => $model));
 
     }
 
