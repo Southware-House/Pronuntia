@@ -55,7 +55,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <br>
     <br>
 
+        <?php
+
+        if(isset($trovato)) {
+            echo '<b style = \'color:red\' >' . "ID lista non valido" . '</b>';
+        }
+
+        ?>
+
     <?= $form->field($model, 'id')->textInput() ?>
+
+
 
     <div class="form-group">
         <?= Html::submitButton('Svolgi', ['class' => 'btn btn-primary']) ?>

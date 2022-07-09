@@ -131,6 +131,7 @@ class EsercizioController extends Controller
     public function actionVisualizzaListeDaSvolgere() {
 
         $model = new ListaEsercizi();
+        $trovato = false;
 
         $id = explode("-", Yii::$app->user->identity->getId());
         $connection = new Connection([
@@ -144,10 +145,22 @@ class EsercizioController extends Controller
         $command2 = $connection->createCommand("select lista_esercizi.id, lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryAll();
 
         if($model->load(Yii::$app->request->post())) {
-            $session = Yii::$app->session;
-            $session->open();
-            $session->set('id_lista', $model->getId());
-            return $this->redirect(['/esercizio/visualizza-esercizi-lista']);
+            $command3 = $connection->createCommand("select assegnazione.id_lista from assegnazione where assegnazione.id_bambino = $id[1]")->queryColumn();
+            $numero = count($command3);
+            for($i = 0; $i < $numero; $i++) {
+                if($command3[$i] == $model->getId()) {
+                    $trovato = true;
+                    $session = Yii::$app->session;
+                    $session->open();
+                    $session->set('id_lista', $model->getId());
+                    return $this->redirect(['/esercizio/visualizza-esercizi-lista']);
+                }
+            }
+
+            if($trovato == false) {
+                return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command2, 'numeroListe'=>$numeroListe, 'model'=>$model, 'trovato' => $trovato));
+            }
+
         }
 
         return $this->render('visualizza-liste-da-svolgere', array('liste'=>$command2, 'numeroListe'=>$numeroListe, 'model'=>$model));
