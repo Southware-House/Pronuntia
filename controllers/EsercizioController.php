@@ -30,7 +30,6 @@ class EsercizioController extends Controller
             }
             if(!file_exists(ROOTPATH . '/audio/esercizi/'.Yii::$app->user->identity->getEmail())){
                 mkdir( ROOTPATH . '/audio/esercizi/'.Yii::$app->user->identity->getEmail(), 0777, true);
-
             }
 
             foreach ($image as $image) {

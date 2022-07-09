@@ -2,12 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Esercizio;
-use app\models\ListaEsercizi;
 use app\models\SceltaLista;
 use Yii;
 use app\models\Bambino;
-use yii\db\Connection;
 use yii\web\Controller;
 
 class BambinoController extends Controller

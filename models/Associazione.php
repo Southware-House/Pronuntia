@@ -10,7 +10,7 @@ use yii\web\IdentityInterface;
  *
  * @property string $email_logo
  * @property string $id_bambino
- */
+*/
 class Associazione extends \yii\db\ActiveRecord
 {
     /**
