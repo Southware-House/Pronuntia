@@ -11,9 +11,11 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
+    <div class="jumbotron bg-white">
+
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+    <p>Riempire i seguenti campi per effettuare il login:</p>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
@@ -41,6 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     <?php ActiveForm::end(); ?>
+
+    </div>
 
     <!--<div class="offset-lg-1" style="color:#999;">
         You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>

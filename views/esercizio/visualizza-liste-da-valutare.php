@@ -4,50 +4,39 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Esercizio */
+/* @var $model app\models\ListaEsercizi */
 /* @var $form ActiveForm */
-$this->title = 'Visualizza esercizi lista';
+$this->title = 'Visualizza liste da valutare';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="visualizza-esercizi-lista">
+<div class="visualizza-liste-da-valutare">
 
     <div class="jumbotron bg-white">
 
     <table class="table table-bordered table-condensed table-striped table-hover">
-        <caption></caption>
+        <caption>Liste da valutare</caption>
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Titolo</th>
-            <th scope="col">Traccia</th>
-            <th scope="col">Svolto</th>
+            <th scope="col">Nome</th>
+        </tr>
         </tr>
         </thead>
         <tbody>
         <?php
-        for ($i = 0; $i < $numeroEsercizi; $i++) {
+        for ($i = 0; $i < $numeroListe; $i++) {
             echo "<tr>";
             echo "<td>";
-            echo $esercizi[$i]['id'];
+            echo $liste[$i]['id'];
             echo "</td>";
             echo "<td>";
-            echo $esercizi[$i]['titolo'];
-            echo "</td>";
-            echo "<td>";
-            echo $esercizi[$i]['traccia'];
-            echo "</td>";
-            echo "<td>";
-            if($esercizi[$i]['is_svolto'] == 1)
-                echo 'Si';
-            else
-                echo 'No';
+            echo $liste[$i]['nome'];
             echo "</td>";
             echo "</tr>";
         }
         ?>
-
         </tbody>
     </table>
 
@@ -62,14 +51,14 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    Inserisci l'<u>ID</u> dell'esercizio da svolgere
+    Inserisci l'<u>ID</u> della lista da valutare
     <br>
     <br>
 
     <?= $form->field($model, 'id')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Svolgi', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Valuta', ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
     </div>

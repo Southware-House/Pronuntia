@@ -101,4 +101,8 @@ class Bambino extends \yii\db\ActiveRecord
     public function getEmail() {
         return $this->email;
     }
+
+    public function getPasswdCaregiver() {
+        return $this->passwd_caregiver;
+    }
 }

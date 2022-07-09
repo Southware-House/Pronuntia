@@ -9,9 +9,13 @@ $this->title = 'Home';
 ?>
 <div class="logopedista-home-logopedista">
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">HOME LOGOPEDISTA</h1>
+    <div class="text-center bg-white">
+        <br>
+        <h1 class="display-4"><b>HOME</b></h1>
+        <br>
     </div>
+
+    <br>
 
     <div class="row">
         <div class="col-sm-6">

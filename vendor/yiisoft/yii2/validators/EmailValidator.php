@@ -81,7 +81,7 @@ class EmailValidator extends Validator
             throw new InvalidConfigException('In order to use IDN validation intl extension must be installed and enabled.');
         }
         if ($this->message === null) {
-            $this->message = Yii::t('yii', '{attribute} is not a valid email address.');
+            $this->message = Yii::t('yii', '{attribute} non valida.');
         }
     }
 

@@ -15,7 +15,7 @@ $this->title = 'Home';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent">
+    <div class="jumbotron text-center bg-white">
         <h1 class="display-4">Benvenuto sul sito ufficiale Pronuntia!</h1>
 
         <p class="lead">Sei un logopedista o un paziente? Effettua l'accesso o registrati dall'apposita sezione in alto!</p>
