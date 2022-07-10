@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\SceltaLista;
+use app\models\Esercizio;
 use app\models\ListaEsercizi;
 use Yii;
 use app\models\Bambino;
