@@ -39,6 +39,7 @@ class Bambino extends \yii\db\ActiveRecord
             [['id'], 'string', 'max' => 6],
             [['email'], 'string', 'max' => 50],
             [['email'], 'required'],
+            ['email', 'email'],
             [['passwd'], 'string', 'max' => 255],
             [['passwd'], 'required'],
             [['nome', 'cognome', 'indirizzo'], 'string', 'max' => 30],

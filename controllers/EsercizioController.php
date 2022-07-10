@@ -10,7 +10,6 @@ use yii\db\Connection;
 use yii\web\Controller;
 use app\models\Esercizio;
 use yii\web\UploadedFile;
-use yii\helpers\ArrayHelper;
 
 class EsercizioController extends Controller
 {
@@ -148,7 +147,6 @@ class EsercizioController extends Controller
             $numero = count($command3);
             for($i = 0; $i < $numero; $i++) {
                 if($command3[$i] == $model->getId()) {
-                    $trovato = true;
                     $session = Yii::$app->session;
                     $session->open();
                     $session->set('id_lista', $model->getId());
@@ -253,24 +251,27 @@ class EsercizioController extends Controller
             'password' => 'root',
         ]);
         $connection->open();
-        $command = $connection->createCommand("select lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryColumn();
-        $numeroListe = count($command);
-        $command2 = $connection->createCommand("select lista_esercizi.id, lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id like assegnazione.id_lista and assegnazione.id_bambino like '$id[1]'")->queryAll();
+        //$nomeListaEsercizi = $connection->createCommand("select lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id = assegnazione.id_lista and assegnazione.id_bambino = '$id[1]'")->queryColumn();
+        $listeEsercizi = $connection->createCommand("select lista_esercizi.id, lista_esercizi.nome from lista_esercizi, assegnazione where lista_esercizi.id = assegnazione.id_lista and assegnazione.id_bambino = '$id[1]'")->queryAll();
+        $numeroListe = count($listeEsercizi);
 
         if($model->load(Yii::$app->request->post())) {
+            if(ListaEsercizi::findOne(['id' => $model->getId()]) == null)
+                return $this->render('visualizza-liste-da-valutare', array('liste'=>$listeEsercizi, 'numeroListe'=>$numeroListe, 'model'=>$model, 'trovato'=>false));
             $session = Yii::$app->session;
             $session->open();
             $session->set('id_lista_da_valutare', $model->getId());
             return $this->redirect(['/esercizio/valuta-lista-esercizi']);
         }
 
-        return $this->render('visualizza-liste-da-valutare', array('liste'=>$command2, 'numeroListe'=>$numeroListe, 'model'=>$model));
+        return $this->render('visualizza-liste-da-valutare', array('liste'=>$listeEsercizi, 'numeroListe'=>$numeroListe, 'model'=>$model));
 
     }
 
     public function actionValutaListaEsercizi() {
 
         $model = new Valutazione();
+
         $id = explode("-", Yii::$app->user->identity->getId());
 
         $session = Yii::$app->session;
@@ -282,9 +283,8 @@ class EsercizioController extends Controller
             'password' => 'root',
         ]);
         $connection->open();
-        $command = $connection->createCommand("select lista_esercizi.nome from lista_esercizi 
+        $nomeListaEsercizi = $connection->createCommand("select lista_esercizi.nome from lista_esercizi 
                                                     where lista_esercizi.id = '$idLista'")->queryOne();
-
         if($model->load(Yii::$app->request->post())) {
             $model->id_lista_esercizi = $idLista;
             $model->id_bambino = $id[1];
@@ -296,7 +296,7 @@ class EsercizioController extends Controller
             }
         }
 
-        return $this->render('valuta-lista-esercizi', array('model'=>$model, 'nome' => $command['nome']));
+        return $this->render('valuta-lista-esercizi', array('model'=>$model, 'nome' => $nomeListaEsercizi['nome']));
 
     }
 

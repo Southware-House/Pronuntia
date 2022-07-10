@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="esercizio-assegnazione-lista-esercizi">
 
+    <div class="jumbotron bg-white">
+
     <?php $form = ActiveForm::begin([
         'layout' => 'horizontal',
         'options' => ['enctype' => 'multipart/form-data'],
@@ -101,4 +103,5 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <?php ActiveForm::end(); ?>
 
+    </div>
 </div>
