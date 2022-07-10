@@ -3,9 +3,11 @@
 namespace app\controllers;
 
 use app\models\SceltaLista;
+use app\models\ListaEsercizi;
 use Yii;
 use app\models\Bambino;
 use yii\web\Controller;
+use yii\db\Connection;
 
 class BambinoController extends Controller
 {
