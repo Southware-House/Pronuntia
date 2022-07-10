@@ -165,5 +165,9 @@ class BambinoController extends Controller
         return $this->render("prenota-appuntamento", array('model' => new Appuntamento()));
     }
 
+    public function actionVisualizzaAppuntamenti(){
+
+        return $this->render('visualizza-appuntamenti', array('model' => new Appuntamento()));
+    }
 
 }

@@ -60,6 +60,17 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">VISUALIZZA APPUNTAMENTI</h5>
+                    <p class="card-text">Visualizza gli appuntamenti con il logopedista</p>
+                    <?= Html::beginForm(['/bambino/visualizza-appuntamenti'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
