@@ -2,9 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\Associazione;
 use app\models\SceltaLista;
+use app\models\Logopedista;
 use app\models\Esercizio;
 use app\models\ListaEsercizi;
+use app\models\Appuntamento;
 use Yii;
 use app\models\Bambino;
 use yii\web\Controller;
@@ -141,5 +144,26 @@ class BambinoController extends Controller
         return $this->render('email-logopedista', array("email" => $command[0], "model" => $model, 'telefono' => $command2[0]));
 
     }
+
+    public function actionPrenotaAppuntamento(){
+
+        Yii::$app->session->removeAllFlashes();
+        $model = new Appuntamento();
+        $model->clearErrors();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_bambino = explode('-', Yii::$app->user->identity->getId())[1];
+            $emailLogopedista = Associazione::findOne(["id_bambino" => $model->id_bambino])->email_logo;
+            $model->id_logopedista = Logopedista::findByEmail($emailLogopedista)->getId();
+            var_dump($model->getAttributes());
+            if ($model->validate()) {
+                if($model->save()){
+                    return $this->redirect(['bambino/home-caregiver']);
+                }
+            }
+        }
+
+        return $this->render("prenota-appuntamento", array('model' => new Appuntamento()));
+    }
+
 
 }

@@ -43,6 +43,23 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">PRENOTA APPUNTAMENTO</h5>
+                    <p class="card-text">Prenota un'appuntamento con il logopedista</p>
+                    <?= Html::beginForm(['/bambino/prenota-appuntamento'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('PRENOTA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

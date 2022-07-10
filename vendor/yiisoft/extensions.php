@@ -48,4 +48,13 @@ return array (
       '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer/src',
     ),
   ),
+  'moonlandsoft/bootui-datetimepicker' => 
+  array (
+    'name' => 'moonlandsoft/bootui-datetimepicker',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@bootui/datetimepicker' => $vendorDir . '/moonlandsoft/bootui-datetimepicker',
+    ),
+  ),
 );
