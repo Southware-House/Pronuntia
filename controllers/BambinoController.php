@@ -154,7 +154,7 @@ class BambinoController extends Controller
             $model->id_bambino = explode('-', Yii::$app->user->identity->getId())[1];
             $emailLogopedista = Associazione::findOne(["id_bambino" => $model->id_bambino])->email_logo;
             $model->id_logopedista = Logopedista::findByEmail($emailLogopedista)->getId();
-            var_dump($model->getAttributes());
+            $model->isLogopedista = 0;
             if ($model->validate()) {
                 if($model->save()){
                     return $this->redirect(['bambino/home-caregiver']);
@@ -162,7 +162,7 @@ class BambinoController extends Controller
             }
         }
 
-        return $this->render("prenota-appuntamento", array('model' => new Appuntamento()));
+        return $this->render("prenota-appuntamento", array('model' => $model));
     }
 
     public function actionVisualizzaAppuntamenti(){

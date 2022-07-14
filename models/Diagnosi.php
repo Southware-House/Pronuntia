@@ -5,27 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "appuntamento".
+ * This is the model class for table "diagnosi".
  *
  * @property int $id
- * @property string $data_appuntamento
- * @property string $orario_appuntamento
- * @property string|null $note
- * @property int $id_bambino
- * @property int $id_logopedista
- * @property int $isLogopedista
+ * @property int|null $id_bambino
+ * @property int|null $id_logopedista
+ * @property string $contenuto_diagnosi
  *
  * @property Bambino $bambino
  * @property Logopedista $logopedista
  */
-class Appuntamento extends \yii\db\ActiveRecord
+class Diagnosi extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'appuntamento';
+        return 'diagnosi';
     }
 
     /**
@@ -34,10 +31,9 @@ class Appuntamento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['data_appuntamento', 'orario_appuntamento', 'id_bambino', 'id_logopedista', 'isLogopedista'], 'required'],
-            [['data_appuntamento', 'orario_appuntamento'], 'safe'],
-            [['id_bambino', 'id_logopedista', 'isLogopedista'], 'integer'],
-            [['note'], 'string', 'max' => 200],
+            [['id_bambino', 'id_logopedista'], 'integer'],
+            [['contenuto_diagnosi'], 'required'],
+            [['contenuto_diagnosi'], 'string', 'max' => 1024],
             [['id_bambino'], 'exist', 'skipOnError' => true, 'targetClass' => Bambino::className(), 'targetAttribute' => ['id_bambino' => 'id']],
             [['id_logopedista'], 'exist', 'skipOnError' => true, 'targetClass' => Logopedista::className(), 'targetAttribute' => ['id_logopedista' => 'id']],
         ];
@@ -50,12 +46,9 @@ class Appuntamento extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'data_appuntamento' => 'Data Appuntamento',
-            'orario_appuntamento' => 'Orario Appuntamento',
-            'note' => 'Note',
             'id_bambino' => 'Id Bambino',
             'id_logopedista' => 'Id Logopedista',
-            'isLogopedista' => 'Is Logopedista',
+            'contenuto_diagnosi' => 'Contenuto Diagnosi',
         ];
     }
 

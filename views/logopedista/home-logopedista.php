@@ -68,7 +68,60 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-
     </div>
 
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">VISUALIZZA CONTATTI BAMBINI</h5>
+                    <p class="card-text">Visualizza la lista dei bambini e dei rispettivi contatti.</p>
+                    <?= Html::beginForm(['/logopedista/visualizza-contatti-bambini'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">FISSA APPUNTAMENTO</h5>
+                    <p class="card-text">Fissa un appuntamento con un bambino e il suo caregiver.</p>
+                    <?= Html::beginForm(['/logopedista/fissa-appuntamento'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('FISSA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">VISUALIZZA APPUNTAMENTI</h5>
+                    <p class="card-text">Visualizza la lista degli appuntamenti con tutti i bambini.</p>
+                    <?= Html::beginForm(['/logopedista/visualizza-appuntamenti-caregiver'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">AGGIUNGI DIAGNOSI</h5>
+                    <p class="card-text">Aggiungi diagnosi di un bambino.</p>
+                    <?= Html::beginForm(['/logopedista/visualizza-appuntamenti-caregiver'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('AGGIUNGI', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

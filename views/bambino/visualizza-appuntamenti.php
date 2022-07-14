@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th scope="col">Data appuntamento</th>
                 <th scope="col">Orario appuntamento</th>
                 <th scope="col">Note</th>
+                <th scope="col">Fissato dal logopedista</th>
             </tr>
             </thead>
             <tbody>
@@ -43,12 +44,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         echo "<td>";
                     echo $appuntamento->getAttribute('note');
                         echo "</td>";
+                    echo "<td>";
+                    if($appuntamento->isLogopedista == 1) {
+                        echo "Si";
+                    }
+                    else {
+                        echo "No";
+                    }
+                    echo "</td>";
                     echo "</tr>";
                 }
             ?>
-
             </tbody>
         </table>
-
     </div>
 </div>
