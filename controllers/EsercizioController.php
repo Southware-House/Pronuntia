@@ -118,6 +118,23 @@ class EsercizioController extends Controller
                     $command->execute();
                 }
 
+                $command2 = $connection->createCommand("select count(andamento_terapia.id_bambino)
+                                                            from andamento_terapia
+                                                            where andamento_terapia.id_bambino = '$model->id_bambino'")->queryColumn();
+
+                if($command2[0] == 1) {
+                    $command3 = $connection->createCommand("select andamento_terapia.esercizi_totali
+                                                                from andamento_terapia
+                                                                where andamento_terapia.id_bambino = '$model->id_bambino'")->queryColumn();
+                    $totale = $command3[0] + $numeroEsercizi;
+                    $command4 = $connection->createCommand("update andamento_terapia set andamento_terapia.esercizi_totali = '$totale' where andamento_terapia.id_bambino = '$model->id_bambino'");
+                    $command4->execute();
+                }
+                else {
+                    $command5 = $connection->createCommand("insert into andamento_terapia (id_bambino, esercizi_totali) values ('$model->id_bambino', '$numeroEsercizi') ");
+                    $command5->execute();
+                }
+
                 return $this->redirect(['/logopedista/home-logopedista']);
             }
         }

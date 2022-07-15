@@ -38,8 +38,8 @@ AppAsset::register($this);
     $navItem = [];
     if(Yii::$app->user->isGuest) {
         array_push($navItem, ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            /*['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],*/
             ['label' => 'Login', 'url' => ['/site/login']],
             ['label' => 'Registrazione', 'url' => ['/site/scelta-registrazione']]);
     }else {
@@ -49,8 +49,8 @@ AppAsset::register($this);
         else {
             array_push($navItem, ['label' => 'Home', 'url' => ['/bambino/home-bambino']]);
         }
-        array_push($navItem, ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']]);
+        /*array_push($navItem, ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']]);*/
         array_push($navItem, '<li>'. Html::beginForm(['/site/logout'],
                 'post', ['class' => 'form-inline']). Html::submitButton('Logout ('. Yii::$app->user->identity->getEmail().')',
                 ['class' => 'btn btn-link logout']).Html::endForm().'</li>');

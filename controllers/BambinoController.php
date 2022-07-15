@@ -113,6 +113,10 @@ class BambinoController extends Controller
             $id2 = $model->getId();
             $command5 = $connection->createCommand("update svolgimento_esercizio set svolgimento_esercizio.conferma_caregiver = true where svolgimento_esercizio.id_esercizio = '$id2' and svolgimento_esercizio.is_svolto like true");
             $command5->execute();
+            $command6 = $connection->createCommand("select andamento_terapia.esercizi_svolti from andamento_terapia where andamento_terapia.id_bambino = '$id[1]'")->queryColumn();
+            $totale = $command6[0] + 1;
+            $command7 = $connection->createCommand("update andamento_terapia set andamento_terapia.esercizi_svolti = '$totale' where andamento_terapia.id_bambino = '$id[1]'");
+            $command7->execute();
             return $this->redirect(['visualizza-esercizi-da-confermare']);
         }
 
@@ -168,6 +172,23 @@ class BambinoController extends Controller
     public function actionVisualizzaAppuntamenti(){
 
         return $this->render('visualizza-appuntamenti', array('model' => new Appuntamento()));
+    }
+
+    public function actionVisualizzaTerapia(){
+
+        $id = explode("-", Yii::$app->user->identity->getId());
+
+        $connection = new Connection([
+            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+            'username' => 'root',
+            'password' => 'root',
+        ]);
+
+        $connection->open();
+        $command = $connection->createCommand("select andamento_terapia.esercizi_svolti, andamento_terapia.esercizi_totali from andamento_terapia where andamento_terapia.id_bambino = '$id[1]'")->queryOne();
+
+        return $this->render('visualizza-terapia', array('dati' => $command));
+
     }
 
 }

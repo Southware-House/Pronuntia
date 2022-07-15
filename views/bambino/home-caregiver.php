@@ -73,4 +73,19 @@ $this->title = 'Home';
         </div>
     </div>
 
+    <br>
+
+    <div class="row" style="margin-left: 25%; margin-right: 25%">
+        <div class="col-sm">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">VISUALIZZA TERAPIA</h5>
+                    <p class="card-text">Visualizza l'andamento della terapia del bambino.</p>
+                    <?= Html::beginForm(['/bambino/visualizza-terapia'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

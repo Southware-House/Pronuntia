@@ -117,8 +117,52 @@ $this->title = 'Home';
                 <div class="card-body">
                     <h5 class="card-title">AGGIUNGI DIAGNOSI</h5>
                     <p class="card-text">Aggiungi diagnosi di un bambino.</p>
-                    <?= Html::beginForm(['/logopedista/visualizza-appuntamenti-caregiver'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::beginForm(['/logopedista/aggiungi-diagnosi'], 'post', ['enctype' => 'multipart/form-data']) ?>
                     <?= Html::submitButton('AGGIUNGI', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">VISUALIZZA O MODIFICA DIAGNOSI</h5>
+                    <p class="card-text">Visualizza o modifica le diagnosi dei bambini.</p>
+                    <?= Html::beginForm(['/logopedista/visualizza-diagnosi'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">VISUALIZZA TERAPIE</h5>
+                    <p class="card-text">Visualizza le terapie di tutti i bambini.</p>
+                    <?= Html::beginForm(['/logopedista/visualizza-terapie'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
+                    <?= Html::endForm() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row" style="margin-left: 25%; margin-right: 25%">
+        <div class="col-sm">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">VISUALIZZA VALUTAZIONE LISTE ESERCIZI</h5>
+                    <p class="card-text">Visualizza l'indice di gradimento delle liste degli esercizi.</p>
+                    <?= Html::beginForm(['/logopedista/visualizza-valutazione'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
                     <?= Html::endForm() ?>
                 </div>
             </div>

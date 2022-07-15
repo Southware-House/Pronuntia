@@ -47,9 +47,8 @@ $this->title = 'Home';
 
     <br>
 
-    <?php //lasciare per ultimo ?>
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row" style="margin-left: 25%; margin-right: 25%">
+        <div class="col-sm">
             <div class="card text-center">
                 <div class="card-body">
                     <?php $form = ActiveForm::begin([
