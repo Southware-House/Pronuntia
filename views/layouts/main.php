@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column min-vh-100", style="background-image: url('<?php echo Yii::$app->request->getBaseUrl(); ?> /images/background.png'); background-size: 150% 150%;">
+<body class="d-flex flex-column min-vh-100", style="background-image: url('<?php echo Yii::$app->request->getBaseUrl(); ?> /images/background.png'); background-size: 200% 200%;">
 <?php $this->beginBody() ?>
 
 <header>

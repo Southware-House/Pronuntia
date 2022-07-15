@@ -15,17 +15,9 @@ $this->title = 'Registrazione';
 
         </br>
 
-        <?php
-        NavBar::begin(['brandLabel' => false]);
-        echo Nav::widget([
-            'items' => [
-                ['label' => 'Registrazione Logopedista', 'url' => ['/logopedista/register-logopedista']],
-                ['label' => 'Registrazione Bambino', 'url' => ['/bambino/register-bambino']],
-            ],
-            'options' => ['class' => 'navbar-nav'],
-        ]);
-        NavBar::end();
-        ?>
+        <a class="btn btn-lg btn-success bg-primary" href="index.php?r=logopedista%2Fregister-logopedista">Registrazione Logopedista</a>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <a class="btn btn-lg btn-success bg-primary" href="index.php?r=bambino%2Fregister-bambino">Registrazione Bambino</a>
 
     </div>
 </div>

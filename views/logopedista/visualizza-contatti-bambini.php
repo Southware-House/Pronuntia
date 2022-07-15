@@ -19,7 +19,7 @@ $this->title = 'Visualizza contatti bambini';
                 <th scope="col">Nome</th>
                 <th scope="col">Cognome</th>
                 <th scope="col">Email</th>
-                <th scope="col">telefono</th>
+                <th scope="col">Telefono</th>
             </tr>
             </tr>
             </thead>
