@@ -38,8 +38,6 @@ AppAsset::register($this);
     $navItem = [];
     if(Yii::$app->user->isGuest) {
         array_push($navItem, ['label' => 'Home', 'url' => ['/site/index']],
-            /*['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],*/
             ['label' => 'Login', 'url' => ['/site/login']],
             ['label' => 'Registrazione', 'url' => ['/site/scelta-registrazione']]);
     }else {
@@ -56,7 +54,7 @@ AppAsset::register($this);
                 ['class' => 'btn btn-link logout']).Html::endForm().'</li>');
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'navbar-nav ml-auto'],
         'items' => $navItem
     ]);
     NavBar::end();
