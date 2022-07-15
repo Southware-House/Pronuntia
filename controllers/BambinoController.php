@@ -66,7 +66,7 @@ class BambinoController extends Controller
 
     public function actionHomeCaregiver() {
 
-        return $this->render('home-caregiver');
+        return $this->render('home-caregiver', array('model' => new Bambino()));
 
     }
 

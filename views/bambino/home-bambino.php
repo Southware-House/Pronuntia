@@ -2,10 +2,12 @@
 
 
 /** @var yii\web\View $this */
+/** @var \app\models\Bambino $model */
 
 use app\controllers\SiteController;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use app\models\Bambino;
 
 $this->title = 'Home';
 ?>
@@ -13,7 +15,7 @@ $this->title = 'Home';
 
     <div class="text-center bg-white">
         <br>
-        <h1 class="display-4"><b>HOME</b></h1>
+        <h1 class="display-4">Ciao, <b><?php echo $model::findOne(['id' => explode('-', Yii::$app->user->identity->getId())[1]])->nome ?></b></h1>
         <br>
     </div>
 
@@ -21,35 +23,34 @@ $this->title = 'Home';
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="card text-center">
+            <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA E SVOLGI LE LISTE DEGLI ESERCIZI</h5>
                     <p class="card-text">Visualizza le liste di esercizi assegnate al bambino e svolgile.</p>
                     <?= Html::beginForm(['/esercizio/visualizza-liste-da-svolgere'], 'post', ['enctype' => 'multipart/form-data']) ?>
-                    <?= Html::submitButton('VISUALIZZA', ['class' => 'submit']) ?>
+                    <?= Html::submitButton('VISUALIZZA', ['class' => 'btn btn-outline-secondary']) ?>
                     <?= Html::endForm() ?>
                 </div>
             </div>
         </div>
 
         <div class="col-sm-6">
-            <div class="card text-center">
+            <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">VALUTA LISTE DI ESERCIZI</h5>
                     <p class="card-text">Visualizza le liste di esercizi che il bambino deve valutare.</p>
                     <?= Html::beginForm(['/esercizio/visualizza-liste-da-valutare'], 'post', ['enctype' => 'multipart/form-data']) ?>
-                    <?= Html::submitButton('VALUTA', ['class' => 'submit']) ?>
+                    <?= Html::submitButton('VALUTA', ['class' => 'btn btn-outline-secondary']) ?>
                     <?= Html::endForm() ?>
                 </div>
             </div>
         </div>
     </div>
 
-    <br>
-
-    <div class="row" style="margin-left: 25%; margin-right: 25%">
-        <div class="col-sm">
-            <div class="card text-center">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <?php $form = ActiveForm::begin([
                         'layout' => 'horizontal',
@@ -70,11 +71,12 @@ $this->title = 'Home';
                     }
                     ?>
                     <div class="form-group">
-                        <?= Html::submitButton('ACCEDI', ['class' => 'submit']) ?>
+                        <?= Html::submitButton('ACCEDI', ['class' => 'btn btn-outline-secondary']) ?>
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
         </div>
+        <div class="col-sm-3"></div>
     </div>
 </div>

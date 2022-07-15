@@ -54,7 +54,7 @@ class LogopedistaController extends Controller
 
     public function actionHomeLogopedista() {
 
-        return $this->render('home-logopedista');
+        return $this->render('home-logopedista', ['model' => new Logopedista()]);
 
     }
 
