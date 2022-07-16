@@ -124,7 +124,7 @@ class BambinoController extends Controller
 
     }
 
-    public function actionEmailLogopedista() {
+    public function actionContattiLogopedista() {
 
         $model = new ListaEsercizi();
 
@@ -142,10 +142,10 @@ class BambinoController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $id = $model->getId();
-            return $this->render('email-logopedista', array("email" => $command[0], "model" => $model, "variabile" => true, "id" => $id));
+            return $this->render('contatti-logopedista', array("email" => $command[0], "model" => $model, "variabile" => true, "id" => $id));
         }
 
-        return $this->render('email-logopedista', array("email" => $command[0], "model" => $model, 'telefono' => $command2[0]));
+        return $this->render('contatti-logopedista', array("email" => $command[0], "model" => $model, 'telefono' => $command2[0]));
 
     }
 
@@ -169,9 +169,9 @@ class BambinoController extends Controller
         return $this->render("prenota-appuntamento", array('model' => $model));
     }
 
-    public function actionVisualizzaAppuntamenti(){
+    public function actionVisualizzaAppuntamentiCaregiver(){
 
-        return $this->render('visualizza-appuntamenti', array('model' => new Appuntamento()));
+        return $this->render('visualizza-appuntamenti-caregiver', array('model' => new Appuntamento()));
     }
 
     public function actionVisualizzaTerapia(){

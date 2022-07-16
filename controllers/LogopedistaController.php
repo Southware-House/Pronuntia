@@ -115,7 +115,7 @@ class LogopedistaController extends Controller
 
     }
 
-    public function actionVisualizzaAppuntamentiCaregiver() {
+    public function actionVisualizzaAppuntamentiLogopedista() {
 
         $id = explode("-", Yii::$app->user->identity->getId());
 
@@ -133,7 +133,7 @@ class LogopedistaController extends Controller
                                                     from bambino, appuntamento
                                                     where bambino.id = appuntamento.id_bambino and appuntamento.id_logopedista = '$id[1]'")->queryAll();
 
-        return $this->render("visualizza-appuntamenti-caregiver", array("appuntamenti" => $command2, "numero" => $numero));
+        return $this->render("visualizza-appuntamenti-logopedista", array("appuntamenti" => $command2, "numero" => $numero));
 
     }
 

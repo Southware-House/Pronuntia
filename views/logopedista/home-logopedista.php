@@ -108,7 +108,7 @@ $this->title = 'Home';
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA APPUNTAMENTI</h5>
                     <p class="card-text">Visualizza la lista degli appuntamenti con tutti i bambini.</p>
-                    <?= Html::beginForm(['/logopedista/visualizza-appuntamenti-caregiver'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::beginForm(['/logopedista/visualizza-appuntamenti-logopedista'], 'post', ['enctype' => 'multipart/form-data']) ?>
                     <?= Html::submitButton('VISUALIZZA', ['class' => 'btn btn-outline-secondary']) ?>
                     <?= Html::endForm() ?>
                 </div>
