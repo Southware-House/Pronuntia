@@ -49,7 +49,7 @@ class ListaEsercizi extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_logopedista' => 'Id Logopedista',
             'nome' => 'Nome Lista',
-            'lista_id' => 'Lista ID esercizi',
+            'lista_id' => 'ID esercizi',
         ];
     }
 
