@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column min-vh-100" style="background-image: linear-gradient(#8cfafd, #d8f9fd); background-position: center; background-repeat: no-repeat; background-size: cover; height: 100%">
+<body class="d-flex flex-column min-vh-100" style="background-image: url('<?php echo Yii::$app->request->getBaseUrl(); ?> /images/background.png'); background-size: 200% 200%;">
 <?php $this->beginBody() ?>
 
 <header style="margin-bottom:50px;">
@@ -70,9 +70,7 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </main>
-<footer class="footer mt-lg-auto py-3 text-muted" style="position: fixed;
-  left: 0;
-  bottom: 0; width:100%">
+<footer class="footer mt-lg-auto py-3 text-muted">
     <div class="container">
         <p class="float-left">&copy; Pronuntia <?= date('Y') ?></p>
         <p class="float-right"> Developed by SouthwareHouse@UNIBA </p>
