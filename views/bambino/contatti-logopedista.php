@@ -6,9 +6,9 @@ use app\controllers\SiteController;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
-$this->title = 'Email logopedista';
+$this->title = 'Contatti logopedista';
 ?>
-<div class="email-logopedista">
+<div class="contatti-logopedista">
 
     <div class="jumbotron bg-white">
 

@@ -38,8 +38,8 @@ $this->title = 'Home';
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">CONTATTA LOGOPEDISTA</h5>
-                    <p class="card-text">Visualizza l'e-mail del logopedista.</p>
-                    <?= Html::beginForm(['/bambino/email-logopedista'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <p class="card-text">Visualizza i contatti del logopedista.</p>
+                    <?= Html::beginForm(['/bambino/contatti-logopedista'], 'post', ['enctype' => 'multipart/form-data']) ?>
                     <?= Html::submitButton('VISUALIZZA', ['class' => 'btn btn-outline-secondary']) ?>
                     <?= Html::endForm() ?>
                 </div>
@@ -67,7 +67,7 @@ $this->title = 'Home';
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA APPUNTAMENTI</h5>
                     <p class="card-text">Visualizza gli appuntamenti con il logopedista</p>
-                    <?= Html::beginForm(['/bambino/visualizza-appuntamenti'], 'post', ['enctype' => 'multipart/form-data']) ?>
+                    <?= Html::beginForm(['/bambino/visualizza-appuntamenti-caregiver'], 'post', ['enctype' => 'multipart/form-data']) ?>
                     <?= Html::submitButton('VISUALIZZA', ['class' => 'btn btn-outline-secondary']) ?>
                     <?= Html::endForm() ?>
                 </div>

@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="visualizza-appuntamenti">
+<div class="visualizza-appuntamenti-caregiver">
 
     <div class="jumbotron bg-white">
 

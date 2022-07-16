@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="visualizza-appuntamenti">
+<div class="visualizza-appuntamenti-logopedista">
 
     <div class="jumbotron bg-white">
 
