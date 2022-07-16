@@ -23,16 +23,17 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column min-vh-100", style="background-image: url('<?php echo Yii::$app->request->getBaseUrl(); ?> /images/background.png'); background-size: 200% 200%;">
+<body class="d-flex flex-column min-vh-100" style="background-image: linear-gradient(#8cfafd, #d8f9fd); background-position: center; background-repeat: no-repeat; background-size: cover; height: 100%">
 <?php $this->beginBody() ?>
 
-<header>
+<header style="margin-bottom:50px;">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/images/logo.png', ['alt'=>Yii::$app->name, 'width'=>'300px', 'height'=>'75px']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+            'class' => 'navbar navbar-expand-md navbar-light navbar-inverse navbar-static-top fixed-top',
+            'style' => 'background-color: #e3f2fd'
         ],
     ]);
     $navItem = [];
@@ -51,7 +52,7 @@ AppAsset::register($this);
             ['label' => 'Contact', 'url' => ['/site/contact']]);*/
         array_push($navItem, '<li>'. Html::beginForm(['/site/logout'],
                 'post', ['class' => 'form-inline']). Html::submitButton('Logout ('. Yii::$app->user->identity->getEmail().')',
-                ['class' => 'btn btn-link logout']).Html::endForm().'</li>');
+                ['class' => 'btn btn-link text-light bg-dark logout']).Html::endForm().'</li>');
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ml-auto'],
@@ -60,7 +61,6 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 </header>
-
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -70,8 +70,9 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </main>
-
-<footer class="footer mt-lg-auto py-3 text-muted bg-white">
+<footer class="footer mt-lg-auto py-3 text-muted" style="position: fixed;
+  left: 0;
+  bottom: 0; width:100%">
     <div class="container">
         <p class="float-left">&copy; Pronuntia <?= date('Y') ?></p>
         <p class="float-right"> Developed by SouthwareHouse@UNIBA </p>

@@ -11,7 +11,7 @@ $this->title = 'Home';
 ?>
 <div class="logopedista-home-logopedista">
 
-    <div class="text-center bg-white">
+    <div class="text-center">
         <br>
         <h1 class="display-4">Benvenuto, <b><?php echo $model::findOne(['id' => explode('-', Yii::$app->user->identity->getId())[1]])->nome ?></b></h1>
         <br>
