@@ -6,7 +6,7 @@ use bootui\datetimepicker\Datepicker;
 use bootui\datetimepicker\Timepicker;
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
-$this->title = 'Aggiungi Appuntamento';
+$this->title = 'Prenota Appuntamento';
 ?>
 <div>
 <div class="bg-white jumbotron text-center">
