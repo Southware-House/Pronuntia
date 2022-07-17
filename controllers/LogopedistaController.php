@@ -219,7 +219,6 @@ class LogopedistaController extends Controller
             }
         }
 
-
         return $this->render("visualizza-diagnosi", array("model" => $model, "bambini" => $command2, "numero" => $numero, "sentinella" => $sentinella_stampa));
 
     }
