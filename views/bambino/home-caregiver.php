@@ -82,7 +82,7 @@ $this->title = 'Home';
         <div class="col-sm-6">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
-                    <h5 class="card-title">VISUALIZZA TERAPIA</h5>
+                    <h5 class="card-title">VISUALIZZA ANDAMENTO TERAPIA</h5>
                     <p class="card-text">Visualizza l'andamento della terapia del bambino.</p>
                     <?= Html::beginForm(['/bambino/visualizza-terapia'], 'post', ['enctype' => 'multipart/form-data']) ?>
                     <?= Html::submitButton('VISUALIZZA', ['class' => 'btn btn-outline-secondary']) ?>
