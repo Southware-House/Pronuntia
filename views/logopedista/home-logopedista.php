@@ -20,7 +20,7 @@ $this->title = 'Home';
     <br>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">CODICE REGISTRAZIONE</h5>
@@ -31,7 +31,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">CREA ESERCIZIO</h5>
@@ -42,12 +42,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">CREA LISTA ESERCIZI</h5>
@@ -58,8 +53,12 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-sm-6">
+    <br>
+
+    <div class="row">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">ASSEGNA LISTA ESERCIZI</h5>
@@ -70,12 +69,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA CONTATTI BAMBINI</h5>
@@ -86,8 +80,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">FISSA APPUNTAMENTO</h5>
@@ -103,7 +96,7 @@ $this->title = 'Home';
     <br>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA APPUNTAMENTI</h5>
@@ -114,7 +107,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">AGGIUNGI DIAGNOSI</h5>
@@ -125,12 +118,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA O MODIFICA DIAGNOSI</h5>
@@ -141,8 +129,13 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-sm-6">
+    <br>
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA TERAPIE</h5>
@@ -153,13 +146,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card bg-light mb-3 text-center">
                 <div class="card-body">
                     <h5 class="card-title">VISUALIZZA VALUTAZIONE LISTE ESERCIZI</h5>
@@ -170,6 +157,7 @@ $this->title = 'Home';
                 </div>
             </div>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-2"></div>
     </div>
+
 </div>
