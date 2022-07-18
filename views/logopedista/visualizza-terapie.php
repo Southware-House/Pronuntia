@@ -7,7 +7,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $model app\models\Appuntamento */
 /* @var $form ActiveForm */
 
-$this->title = 'Visualizza terapie';
+$this->title = 'Visualizza andamento terapie';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
